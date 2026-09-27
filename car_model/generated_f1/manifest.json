@@ -1,0 +1,48 @@
+{
+  "dimensions_cm": [
+    60,
+    25,
+    17.5
+  ],
+  "wheelbase_cm": 37,
+  "wheel_track_cm": 20,
+  "wheel_radius_cm": 4.5,
+  "parts": [
+    {
+      "name": "Chassis",
+      "triangles": 228
+    },
+    {
+      "name": "Floor",
+      "triangles": 76
+    },
+    {
+      "name": "Wings",
+      "triangles": 120
+    },
+    {
+      "name": "Cockpit",
+      "triangles": 60
+    },
+    {
+      "name": "Halo",
+      "triangles": 396
+    },
+    {
+      "name": "Accents",
+      "triangles": 132
+    },
+    {
+      "name": "Tire",
+      "triangles": 188
+    },
+    {
+      "name": "Rim",
+      "triangles": 248
+    },
+    {
+      "name": "Hub",
+      "triangles": 440
+    }
+  ]
+}

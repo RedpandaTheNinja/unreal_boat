@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+python/*.egg-info/
+python/build/
+runs/
+logs/
+specs/worlds/terrain/
+*.zip

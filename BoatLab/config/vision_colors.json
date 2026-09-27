@@ -1,0 +1,249 @@
+{
+ "schema": "boatlab_vision_v1",
+ "note": "OpenCV HSV (H 0-180, S/V 0-255). Defaults tuned on the Python twin renderer. Re-tune on Unreal and real images with tools/tune_colors.py - lighting, exposure and fog shift these a lot.",
+ "min_area_px": 18,
+ "max_range_m": 40.0,
+ "horizon_margin_px": 2,
+ "object_heights_m": {
+  "buoy": 0.55,
+  "case": 0.18,
+  "target": 0.2,
+  "detector": 0.9
+ },
+ "object_radii_m": {
+  "buoy": 0.135,
+  "case": 0.2,
+  "target": 1.524,
+  "detector": 0.15
+ },
+ "colors": {
+  "red": {
+   "h": [
+    [
+     0,
+     8
+    ],
+    [
+     172,
+     180
+    ]
+   ],
+   "s": [
+    150,
+    255
+   ],
+   "v": [
+    70,
+    255
+   ],
+   "classes": [
+    {
+     "label": "red",
+     "kind": "buoy"
+    }
+   ]
+  },
+  "green": {
+   "h": [
+    [
+     35,
+     80
+    ]
+   ],
+   "s": [
+    130,
+    255
+   ],
+   "v": [
+    70,
+    255
+   ],
+   "classes": [
+    {
+     "label": "green",
+     "kind": "buoy"
+    }
+   ]
+  },
+  "blue": {
+   "h": [
+    [
+     98,
+     125
+    ]
+   ],
+   "s": [
+    120,
+    255
+   ],
+   "v": [
+    60,
+    255
+   ],
+   "classes": [
+    {
+     "label": "blue",
+     "kind": "buoy"
+    }
+   ]
+  },
+  "purple": {
+   "h": [
+    [
+     128,
+     152
+    ]
+   ],
+   "s": [
+    80,
+    255
+   ],
+   "v": [
+    50,
+    255
+   ],
+   "classes": [
+    {
+     "label": "purple",
+     "kind": "buoy"
+    }
+   ]
+  },
+  "pink": {
+   "h": [
+    [
+     154,
+     171
+    ]
+   ],
+   "s": [
+    60,
+    200
+   ],
+   "v": [
+    150,
+    255
+   ],
+   "classes": [
+    {
+     "label": "pink",
+     "kind": "detector"
+    }
+   ]
+  },
+  "orange": {
+   "h": [
+    [
+     8,
+     17
+    ]
+   ],
+   "s": [
+    150,
+    255
+   ],
+   "v": [
+    120,
+    255
+   ],
+   "classes": [
+    {
+     "label": "orange",
+     "kind": "buoy",
+     "aspect_min": 0.9
+    },
+    {
+     "label": "target",
+     "kind": "target",
+     "aspect_max": 0.9
+    }
+   ],
+   "allow_border": true,
+   "merge_dark_v": 60
+  },
+  "yellow": {
+   "h": [
+    [
+     18,
+     34
+    ]
+   ],
+   "s": [
+    150,
+    255
+   ],
+   "v": [
+    130,
+    255
+   ],
+   "classes": [
+    {
+     "label": "yellow",
+     "kind": "buoy",
+     "aspect_min": 0.9
+    },
+    {
+     "label": "case",
+     "kind": "case",
+     "aspect_max": 0.9
+    }
+   ]
+  },
+  "black": {
+   "h": [
+    [
+     0,
+     180
+    ]
+   ],
+   "s": [
+    0,
+    255
+   ],
+   "v": [
+    0,
+    50
+   ],
+   "classes": [
+    {
+     "label": "black",
+     "kind": "buoy",
+     "aspect_min": 1.2
+    }
+   ]
+  },
+  "zebra": {
+   "h": [
+    [
+     0,
+     180
+    ]
+   ],
+   "s": [
+    0,
+    45
+   ],
+   "v": [
+    120,
+    255
+   ],
+   "merge_dark_v": 60,
+   "close_kernel": [
+    3,
+    7
+   ],
+   "classes": [
+    {
+     "label": "zebra",
+     "kind": "buoy",
+     "aspect_min": 0.8
+    }
+   ]
+  }
+ },
+ "size_ratio": [
+  0.35,
+  2.8
+ ],
+ "min_fill": 0.45
+}

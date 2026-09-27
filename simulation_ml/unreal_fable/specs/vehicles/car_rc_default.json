@@ -1,0 +1,48 @@
+{
+  "params_version": "1.0",
+  "name": "car_rc_default",
+  "type": "car_ackermann",
+  "notes": "Placeholder numbers for a 1/10-scale RC platform (F1TENTH-class). REPLACE with measured values - see docs/CALIBRATION.md. Every number here is something you can measure with a tape, a scale, a stopwatch and a phone.",
+  "calibration": { "source": "defaults", "date": "", "rms_error": {} },
+
+  "common": {
+    "mass_kg": 3.6,
+    "length_m": 0.50,
+    "width_m": 0.27,
+    "height_m": 0.15,
+    "com_offset_m": [0.0, 0.0, 0.0],
+    "yaw_inertia_kgm2": 0.09,
+    "actuator_delay_s": 0.04,
+    "control_rate_hz": 50
+  },
+
+  "car": {
+    "wheelbase_m": 0.324,
+    "track_width_m": 0.24,
+    "wheel_radius_m": 0.054,
+    "com_height_m": 0.06,
+    "max_steer_rad": 0.40,
+    "steer_rate_rad_s": 4.0,
+    "steer_deadband": 0.02,
+    "steer_bias": 0.0,
+    "max_speed_mps": 5.0,
+    "max_reverse_mps": 1.0,
+    "accel_time_constant_s": 0.45,
+    "max_accel_mps2": 4.0,
+    "max_brake_mps2": 6.0,
+    "drag_coeff": 0.05,
+    "rolling_resistance": 0.3,
+    "tire_friction": 0.9,
+    "understeer_gain": 0.02,
+    "drive": "rwd",
+    "motor_torque_nm": 1.2,
+    "gear_ratio": 1.0
+  },
+
+  "sensors": {
+    "lidar": { "enabled": true, "n_rays": 540, "fov_rad": 4.712, "range_max_m": 12.0, "noise_std_m": 0.02, "mount_m": [0.15, 0.0, 0.12], "rate_hz": 10 },
+    "imu": { "gyro_noise_std": 0.005, "accel_noise_std": 0.05, "gyro_bias": 0.0 },
+    "gps": { "enabled": false },
+    "odom": { "speed_noise_std": 0.02, "pose_noise_std_m": 0.0 }
+  }
+}

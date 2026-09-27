@@ -1,0 +1,300 @@
+{
+  "spec_version": "2.0",
+  "name": "car_figure8_digital_twin",
+  "scenario": "car",
+  "seed": 17,
+  "notes": "Figure-8 urban test track for Ackermann path-following and obstacle-avoidance tuning. Includes gated lap task with repeatable geometry and light randomization for algorithm robustness.",
+  "vehicle_params": "vehicles/car_orangecube_digital_twin.json",
+  "world": {
+    "size_m": [
+      36,
+      24
+    ],
+    "geo_origin": {
+      "lat": 39.7684,
+      "lon": -86.1581,
+      "alt": 220
+    },
+    "terrain": {
+      "mode": "flat",
+      "surface": {
+        "material_preset": "asphalt",
+        "friction": 0.95,
+        "restitution": 0.08
+      }
+    },
+    "lighting": {
+      "preset": "noon"
+    }
+  },
+  "spawn": {
+    "xy_m": [
+      0.0,
+      0.0
+    ],
+    "yaw_rad": 0.0,
+    "jitter_m": 0.15,
+    "jitter_yaw_rad": 0.08
+  },
+  "track": {
+    "centerline_m": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        2.087,
+        0.884
+      ],
+      [
+        4.127,
+        1.69
+      ],
+      [
+        6.074,
+        2.345
+      ],
+      [
+        7.886,
+        2.793
+      ],
+      [
+        9.522,
+        2.992
+      ],
+      [
+        10.946,
+        2.925
+      ],
+      [
+        12.124,
+        2.598
+      ],
+      [
+        13.032,
+        2.041
+      ],
+      [
+        13.649,
+        1.302
+      ],
+      [
+        13.961,
+        0.447
+      ],
+      [
+        13.961,
+        -0.447
+      ],
+      [
+        13.649,
+        -1.302
+      ],
+      [
+        13.032,
+        -2.041
+      ],
+      [
+        12.124,
+        -2.598
+      ],
+      [
+        10.946,
+        -2.925
+      ],
+      [
+        9.522,
+        -2.992
+      ],
+      [
+        7.886,
+        -2.793
+      ],
+      [
+        6.074,
+        -2.345
+      ],
+      [
+        4.127,
+        -1.69
+      ],
+      [
+        2.087,
+        -0.884
+      ],
+      [
+        0.0,
+        -0.0
+      ],
+      [
+        -2.087,
+        0.884
+      ],
+      [
+        -4.127,
+        1.69
+      ],
+      [
+        -6.074,
+        2.345
+      ],
+      [
+        -7.886,
+        2.793
+      ],
+      [
+        -9.522,
+        2.992
+      ],
+      [
+        -10.946,
+        2.925
+      ],
+      [
+        -12.124,
+        2.598
+      ],
+      [
+        -13.032,
+        2.041
+      ],
+      [
+        -13.649,
+        1.302
+      ],
+      [
+        -13.961,
+        0.447
+      ],
+      [
+        -13.961,
+        -0.447
+      ],
+      [
+        -13.649,
+        -1.302
+      ],
+      [
+        -13.032,
+        -2.041
+      ],
+      [
+        -12.124,
+        -2.598
+      ],
+      [
+        -10.946,
+        -2.925
+      ],
+      [
+        -9.522,
+        -2.992
+      ],
+      [
+        -7.886,
+        -2.793
+      ],
+      [
+        -6.074,
+        -2.345
+      ],
+      [
+        -4.127,
+        -1.69
+      ],
+      [
+        -2.087,
+        -0.884
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "closed": true,
+    "width_m": 2.4,
+    "border": "cones",
+    "border_spacing_m": 2.0
+  },
+  "objects": [
+    {
+      "label": "left_crossing_marker",
+      "kind": "cone",
+      "xy_m": [
+        0.2,
+        1.1
+      ],
+      "scale": [
+        0.9,
+        0.9,
+        1.0
+      ],
+      "tag": "marker"
+    },
+    {
+      "label": "right_crossing_marker",
+      "kind": "cone",
+      "xy_m": [
+        0.2,
+        -1.1
+      ],
+      "scale": [
+        0.9,
+        0.9,
+        1.0
+      ],
+      "tag": "marker"
+    }
+  ],
+  "obstacle_fields": [
+    {
+      "kind": "barrel",
+      "count": 12,
+      "area_m": [
+        -16.0,
+        -10.0,
+        16.0,
+        10.0
+      ],
+      "min_separation_m": 2.2,
+      "avoid_track_m": 3.2,
+      "scale_jitter": 0.2
+    }
+  ],
+  "task": {
+    "type": "lap",
+    "laps": 2,
+    "tolerance_m": 0.9,
+    "max_time_s": 180,
+    "fail_on": [
+      "collision",
+      "off_track",
+      "timeout"
+    ],
+    "metrics": [
+      "cross_track_rms",
+      "time",
+      "collisions",
+      "control_effort"
+    ]
+  },
+  "randomization": {
+    "enabled": true,
+    "vary": [
+      "friction",
+      "obstacle_layout",
+      "spawn_pose",
+      "actuator_delay"
+    ],
+    "ranges": {
+      "friction": [
+        0.8,
+        0.98
+      ],
+      "actuator_delay_s": [
+        0.03,
+        0.08
+      ]
+    }
+  }
+}

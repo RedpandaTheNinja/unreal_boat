@@ -1,0 +1,22 @@
+{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "0.1.0",
+  "FriendlyName": "Fable Bridge",
+  "Description": "UDP/JSON bridge between an external Python controller and Unreal vehicles (Ackermann car via Chaos Vehicles, twin-thruster boat via custom hydrodynamics), with a line-trace 2-D lidar and runtime obstacle spawning. Protocol: docs/PROTOCOL.md.",
+  "Category": "Simulation",
+  "CreatedBy": "unreal_fable dev kit",
+  "CanContainContent": true,
+  "IsBetaVersion": true,
+  "Installed": false,
+  "Modules": [
+    {
+      "Name": "FableBridge",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
+    }
+  ],
+  "Plugins": [
+    { "Name": "ChaosVehiclesPlugin", "Enabled": true }
+  ]
+}

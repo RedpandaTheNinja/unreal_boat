@@ -1,0 +1,9 @@
+{
+  "name": "waypoints_demo",
+  "description": "Pure pursuit through GPS waypoints (lat/lon). Replace with your own points; the dashboard can also send clicked waypoints.",
+  "nav_mode": "prior",
+  "tasks": [
+    {"type": "waypoints", "latlon": [[41.70233, -85.02263], [41.70238, -85.02300], [41.70244, -85.02320], [41.70232, -85.02330], [41.70228, -85.02290]], "label": "GPS waypoint loop"},
+    {"type": "dock", "label": "Return to dock"}
+  ]
+}

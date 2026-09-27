@@ -1,0 +1,17 @@
+Windows physics-only port, 2026.
+Derived from RapyutaSimulationPlugins, Copyright 2020-2023 Rapyuta Robotics Co., Ltd.
+Upstream commit: c8f2c4804c580b4dc84ae4082060897f16ee7f52 (UE5.5 branch).
+https://github.com/rapyuta-robotics/RapyutaSimulationPlugins
+Licensed under Apache License 2.0; full text in LICENSE.
+
+Modified native Burger assembly and differential wheel drive to remove Linux ROS
+dependencies. Added a rigid tandem constraint, keyboard and local UDP control.
+Original Burger Blueprint, meshes and physical materials are copied unchanged.
+RR2DLidarComponent now adapts upstream ray geometry to synchronous ideal range
+scans, excluding the full tandem from self hits. Noise, intensity response and
+ROS publishing are not ported. This is not a full Rapyuta/ROS port.
+The original script module and content mount names are retained for asset references.
+
+Added Windows-native RGB scene capture and ideal chassis IMU measurements.
+These use Unreal rendering/rigid-body state and a local UDP interface, not the
+upstream ROS publishers or a calibrated commercial camera/IMU noise model.

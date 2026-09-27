@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "status": "runnable_unreal_physics_uncalibrated",
+  "length_m": 3.9624,
+  "beam_m": 0.9144,
+  "loaded_mass_kg": 172.3651006,
+  "draft_m": null,
+  "propulsion": {
+    "motor_count": 2,
+    "location": "stern",
+    "steering_type": "fixed_axis_differential_thrust",
+    "independent_reverse": true,
+    "motor_spacing_m": 0.6096,
+    "motor_controller": "Separate continuous motor controller commanded by Arduino",
+    "serial_peer": "Jetson Orin Nano",
+    "serial_protocol": null,
+    "autopilot_command_path": null,
+    "current_command_path": "Jetson Orin Nano -> serial -> Arduino -> fixed reversible stern motors",
+    "motor_model": "Minn Kota Endura C2 30",
+    "nominal_voltage": 12,
+    "nominal_forward_thrust_n_per_motor": 133.44664846,
+    "control_mode": "continuous_external_motor_controller"
+  },
+  "compute": {
+    "perception": "Jetson Orin Nano",
+    "autopilot_hardware": "Cube Orange+",
+    "autopilot_software": "ArduPilot",
+    "simulation_autopilot": "ArduPilot Rover Boat SITL (planned)",
+    "installation_status": "Cube Orange+ is a planned addition, not installed"
+  },
+  "sensors": {
+    "depth_camera": "ZED2i",
+    "rgb_camera": "webcam (model unspecified)",
+    "gps": "Here4 with RTK",
+    "mounts_and_calibration": null,
+    "imu_status": "No operational boat IMU reported; simulated IMU belongs to planned-autopilot configuration",
+    "gps_installation_status": "Here4 RTK is a planned addition, not installed"
+  },
+  "sampling": {
+    "period_type": "fixed_time",
+    "period_s": null,
+    "spatial_spacing": "variable_with_realized_motion"
+  },
+  "simulation_configurations": [
+    "current_hardware_jetson_arduino",
+    "planned_ardupilot_sitl_gps_imu"
+  ],
+  "base_mass_kg": 58.9670081,
+  "payload_mass_kg": 113.3980925
+}

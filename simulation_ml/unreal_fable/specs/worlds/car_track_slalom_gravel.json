@@ -1,0 +1,250 @@
+{
+  "spec_version": "2.0",
+  "name": "car_track_slalom_gravel",
+  "scenario": "car",
+  "seed": 3,
+  "notes": "40 m slalom through 8 cones at 4.4 m spacing on rough gravel with a few barrels off-line. Tests steering authority, actuator delay and traction. Friction and layout randomize per episode.",
+  "vehicle_params": "vehicles/car_rc_default.json",
+  "world": {
+    "size_m": [
+      50,
+      20
+    ],
+    "terrain": {
+      "mode": "procedural",
+      "procedural": {
+        "roughness_m": 0.04,
+        "feature_size_m": 6,
+        "slope_max_deg": 6
+      },
+      "surface": {
+        "material_preset": "gravel",
+        "friction": 0.7,
+        "restitution": 0.05
+      }
+    },
+    "lighting": {
+      "preset": "overcast"
+    }
+  },
+  "spawn": {
+    "xy_m": [
+      -22.0,
+      0.0
+    ],
+    "yaw_rad": 0.0,
+    "jitter_m": 0.3,
+    "jitter_yaw_rad": 0.1
+  },
+  "track": {
+    "centerline_m": [
+      [
+        -20.0,
+        0.0
+      ],
+      [
+        -15.56,
+        2.5
+      ],
+      [
+        -11.11,
+        -2.5
+      ],
+      [
+        -6.67,
+        2.5
+      ],
+      [
+        -2.22,
+        -2.5
+      ],
+      [
+        2.22,
+        2.5
+      ],
+      [
+        6.67,
+        -2.5
+      ],
+      [
+        11.11,
+        2.5
+      ],
+      [
+        15.56,
+        -2.5
+      ],
+      [
+        20.0,
+        0.0
+      ]
+    ],
+    "closed": false,
+    "width_m": 6.0,
+    "border": "none"
+  },
+  "objects": [
+    {
+      "label": "slalom_0",
+      "kind": "cone",
+      "xy_m": [
+        -15.56,
+        0.0
+      ],
+      "tag": "slalom"
+    },
+    {
+      "label": "slalom_1",
+      "kind": "cone",
+      "xy_m": [
+        -11.11,
+        0.0
+      ],
+      "tag": "slalom"
+    },
+    {
+      "label": "slalom_2",
+      "kind": "cone",
+      "xy_m": [
+        -6.67,
+        0.0
+      ],
+      "tag": "slalom"
+    },
+    {
+      "label": "slalom_3",
+      "kind": "cone",
+      "xy_m": [
+        -2.22,
+        0.0
+      ],
+      "tag": "slalom"
+    },
+    {
+      "label": "slalom_4",
+      "kind": "cone",
+      "xy_m": [
+        2.22,
+        0.0
+      ],
+      "tag": "slalom"
+    },
+    {
+      "label": "slalom_5",
+      "kind": "cone",
+      "xy_m": [
+        6.67,
+        0.0
+      ],
+      "tag": "slalom"
+    },
+    {
+      "label": "slalom_6",
+      "kind": "cone",
+      "xy_m": [
+        11.11,
+        0.0
+      ],
+      "tag": "slalom"
+    },
+    {
+      "label": "slalom_7",
+      "kind": "cone",
+      "xy_m": [
+        15.56,
+        0.0
+      ],
+      "tag": "slalom"
+    }
+  ],
+  "obstacle_fields": [
+    {
+      "kind": "barrel",
+      "count": 6,
+      "area_m": [
+        -18,
+        -8,
+        18,
+        8
+      ],
+      "min_separation_m": 2.5,
+      "avoid_track_m": 3.5
+    }
+  ],
+  "task": {
+    "type": "waypoints",
+    "waypoints_m": [
+      [
+        -20.0,
+        0.0
+      ],
+      [
+        -15.56,
+        2.5
+      ],
+      [
+        -11.11,
+        -2.5
+      ],
+      [
+        -6.67,
+        2.5
+      ],
+      [
+        -2.22,
+        -2.5
+      ],
+      [
+        2.22,
+        2.5
+      ],
+      [
+        6.67,
+        -2.5
+      ],
+      [
+        11.11,
+        2.5
+      ],
+      [
+        15.56,
+        -2.5
+      ],
+      [
+        20.0,
+        0.0
+      ]
+    ],
+    "tolerance_m": 0.8,
+    "max_time_s": 60,
+    "fail_on": [
+      "collision",
+      "timeout"
+    ],
+    "metrics": [
+      "cross_track_rms",
+      "time",
+      "collisions",
+      "min_clearance_m"
+    ]
+  },
+  "randomization": {
+    "enabled": true,
+    "vary": [
+      "friction",
+      "obstacle_layout",
+      "spawn_pose",
+      "actuator_delay"
+    ],
+    "ranges": {
+      "friction": [
+        0.5,
+        0.9
+      ],
+      "actuator_delay_s": [
+        0.02,
+        0.1
+      ]
+    }
+  }
+}

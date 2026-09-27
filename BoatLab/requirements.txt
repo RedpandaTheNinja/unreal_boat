@@ -1,0 +1,6 @@
+# BoatLab (Windows dev box, Python 3.11 or 3.12)
+numpy>=1.26
+opencv-python>=4.9
+matplotlib>=3.8
+pyserial>=3.5
+pytest>=8.0

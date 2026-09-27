@@ -1,0 +1,17 @@
+{
+  "engine_root": "C:/Program Files/Epic Games/UE_5.8",
+  "udp_port": 7449,
+  "dashboard_port": 8765,
+  "control_hz": 20,
+  "speed_mps": 3.0,
+  "max_speed_mps": 138.5824,
+  "tire_grip_multiplier": 1.0,
+  "lookahead_m": 0.8,
+  "train_seconds": 600,
+  "evaluate_seconds": 300,
+  "alpha": 0.15,
+  "gamma": 0.95,
+  "epsilon": 0.20,
+  "residual_actions_rad": [-0.04, 0.0, 0.04],
+  "seed": 7
+}

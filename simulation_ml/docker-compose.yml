@@ -1,0 +1,28 @@
+services:
+  fable-ros2-adapter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fable-ros2-adapter
+    network_mode: host
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    environment:
+      ROS_DOMAIN_ID: ${ROS_DOMAIN_ID:-0}
+      RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION:-rmw_fastrtps_cpp}
+      FABLE_SCENE: ${FABLE_SCENE:-/workspace/unreal_fable/specs/worlds/car_figure8_digital_twin.json}
+      FABLE_VEHICLE: ${FABLE_VEHICLE:-/workspace/unreal_fable/specs/vehicles/car_orangecube_digital_twin.json}
+      FABLE_CONTROLLER: ${FABLE_CONTROLLER:-pure_pursuit}
+      FABLE_RATE: ${FABLE_RATE:-}
+      PYTHONUNBUFFERED: "1"
+    command: >
+      bash -lc "
+      cd /workspace/unreal_fable/python
+      && python3 -m fable.ros2_adapter
+        --scene ${FABLE_SCENE}
+        ${FABLE_VEHICLE:+--vehicle ${FABLE_VEHICLE}}
+        --controller ${FABLE_CONTROLLER}
+        ${FABLE_RATE:+--rate ${FABLE_RATE}}
+      "
+    restart: unless-stopped

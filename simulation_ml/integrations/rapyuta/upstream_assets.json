@@ -1,0 +1,31 @@
+{
+  "upstream": "https://github.com/rapyuta-robotics/RapyutaSimulationPlugins",
+  "commit": "c8f2c4804c580b4dc84ae4082060897f16ee7f52",
+  "assets": {
+    "Content/Materials/M_CasterBallMat.uasset": "d5dbd06b032fb3332bfc7266ee1488cde1a169edf307cebef95201021ecdd50d",
+    "Content/Materials/M_RobotMat.uasset": "00c641d0339a0edb9168c19100a3281816b93d880a0d898c05f114fcf9c821ae",
+    "Content/Materials/PM_CasterBallPhysMat.uasset": "73bfd6e0d8dbd164274c1e926e180653e0a6048d87e174cf33a5e44fbb0283bd",
+    "Content/Materials/PM_RobotPhysMat.uasset": "71e0cfb94b8693b854d1ab28a34c5ceb22e960a8dac7fc46fd266e536a8d3ff9",
+    "Content/Robots/Turtlebot3/Models/Burger/BurgerBase.uasset": "de2677672bbf21ac99c242690729c7522dae33e30d095b7daddd7af0a6b51c1f",
+    "Content/Robots/Turtlebot3/Models/Burger/dark.uasset": "c9d249e7841b0972db5e93101f15e48018fb309a6b486aae12987b5e65f015ad",
+    "Content/Robots/Turtlebot3/Models/Burger/light_black.uasset": "8ddebb1fa0598bae22a7a50068088d350b188f7d386862c2013a5029325fe3bf",
+    "Content/Robots/Turtlebot3/Models/Burger/Turtlebot3Burger.uasset": "9bf1737d00666c5c68c3aa1d9003fae62a80fc4a3126bc693503f3db0c420bc5",
+    "Content/Robots/Turtlebot3/Models/Burger/Turtlebot3Burger_Physics.uasset": "0115675b255ce6830be080586ac8b404956d771dc8b39386c4c0f78e17bfbb02",
+    "Content/Robots/Turtlebot3/Models/Burger/Turtlebot3Burger_Skeleton.uasset": "5a1403a8dbc732c33fc13a09324ae730cc5895ec992ab31bcdc8f72cf0825636",
+    "Content/Robots/Turtlebot3/Models/Burger/BurgerSimpleCollision/burger_base.uasset": "062b3ad8296f9700f94e2bf63df4dd363286fdc4c492e70dd0cfd5f2ce0af96f",
+    "Content/Robots/Turtlebot3/Models/Burger/BurgerSimpleCollision/burger_caster_back.uasset": "30f6e8e58a0e0362184c95407948e28b1ad113558ca23c14e872366d2df666d8",
+    "Content/Robots/Turtlebot3/Models/Burger/BurgerSimpleCollision/burger_lds.uasset": "6ab205c5f6c9b39026e833d08005d947db2fdea4bf805a99afb6bd47110e7b33",
+    "Content/Robots/Turtlebot3/Models/Burger/BurgerSimpleCollision/burger_left_wheel.uasset": "3fdb2156b2cf78a2aa4ec5512cd20da8f2d8a01ab8e1a6e5db997f4d85e70c92",
+    "Content/Robots/Turtlebot3/Models/Burger/BurgerSimpleCollision/burger_right_wheel.uasset": "99b442545b174956e925ea11b8b6807a551f57323e4f87d04af2f0bd8b20374b",
+    "Content/Robots/Turtlebot3/Models/Common/BallCaster.uasset": "17ed0395143b6a3b199f346e1b0ebe702d8edd46231e7175060973dba42f8c5d",
+    "Content/Robots/Turtlebot3/Models/Common/Lds.uasset": "2f8494e6e8c6a21c9360e16b82755b368b9ad5f3ba64e188ba36866938fc6c25",
+    "Content/Robots/Turtlebot3/Models/Common/LeftWheel.uasset": "29f241f38a73d64170cf9dc079bc7b4db75799cd0c512516f6eb4ae59cce6ec5",
+    "Content/Robots/Turtlebot3/Models/Common/RightWheel.uasset": "b3e51985fc7f9951a6e75c93a00af36df4496d0cbfe9725a0f146bfc3338cfd8",
+    "Content/Robots/Turtlebot3/Physics/BP_TurtlebotBurger.uasset": "eb896635dc5b3d76a93501d4506fce5cacbd7a81cd63a215d2389fa4d76ef87b",
+    "Content/Textures/T_Default_D.uasset": "1f867c32472b7cdcf65aa79234bfce75ab2d00c2a9f38c93a38eb50cf02d9646",
+    "Content/Textures/T_Default_N.uasset": "93fd3c9f1cca09d368a8258fddd17a1182d582389b46ac8af191b3623800528b",
+    "Content/Textures/T_Default_ORM.uasset": "6438ae3dda18131f12409963ab655f57521737d816f7a2e5e50bf0d208313423",
+    "Content/Textures/T_PouredConcrete01_BC.uasset": "416a02dec15024a02b07d4bd439e54471443d64e05a242bff35fdc4ddd36a866",
+    "Content/Textures/T_PouredConcrete01_N.uasset": "36c7cbbad3bacbd36a59d8c8ff82d834083ea2e0b4f8e29d61c0694b70e05fe7"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "aimm_full",
+  "description": "All boat-side AIMM-ICC 2025 challenges in course order: 1 Gate, 2 Dodge, 3 Evade, 4 Identify, 5 Deploy, 6 Launch, 7 Recover, 9 Return (+ dock). Challenge 8 (Receive) happens at the dock and is not a navigation task.",
+  "nav_mode": "fused",
+  "prior_sigma_m": 1.0,
+  "time_budget_s": {"default": 240, "identify": 200, "channel": 200},
+  "tasks": [
+    {"type": "gate", "gate": "gateA", "label": "C1 Gate navigation"},
+    {"type": "slalom", "entry_gate": "gateA", "exit_gate": "gateB", "exit_turn": "right", "label": "C2 Dodge (slalom)"},
+    {"type": "channel", "label": "C3 Evade (channel)"},
+    {"type": "identify", "color": "blue", "label": "C4 Identify (contact colour)"},
+    {"type": "deploy", "label": "C5 Deploy sensor at zebra buoy"},
+    {"type": "launch", "label": "C6 Launch at target"},
+    {"type": "recover", "label": "C7 Recover floating case"},
+    {"type": "return", "dock": true, "label": "C9 Return + dock"}
+  ]
+}

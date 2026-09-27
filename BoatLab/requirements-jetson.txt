@@ -1,0 +1,5 @@
+# Jetson Orin Nano (JetPack): use the system OpenCV (python3-opencv) instead of opencv-python.
+numpy
+pyserial>=3.5
+pymavlink>=2.4      # Cube Orange+ / Here4 RTK over MAVLink (planned hardware)
+# pyzed             # ZED2i depth: install the ZED SDK, then its python API (get_python_api.py)

@@ -1,0 +1,68 @@
+{
+  "params_version": "1.0",
+  "name": "car_orangecube_digital_twin",
+  "type": "car_ackermann",
+  "notes": "Digital-twin baseline for Jetson Orin Nano + Orange Cube+ platform with Ackermann throttle/steer and RTK-grade sensing. Replace with measured values after calibration.",
+  "calibration": {
+    "source": "placeholder",
+    "date": "",
+    "rms_error": {}
+  },
+  "common": {
+    "mass_kg": 3.4,
+    "length_m": 0.47,
+    "width_m": 0.24,
+    "height_m": 0.16,
+    "com_offset_m": [0.0, 0.0, 0.0],
+    "yaw_inertia_kgm2": 0.06,
+    "actuator_delay_s": 0.05,
+    "control_rate_hz": 50
+  },
+  "car": {
+    "wheelbase_m": 0.28,
+    "track_width_m": 0.22,
+    "wheel_radius_m": 0.05,
+    "com_height_m": 0.06,
+    "max_steer_rad": 0.44,
+    "steer_rate_rad_s": 4.5,
+    "steer_deadband": 0.02,
+    "steer_bias": 0.0,
+    "max_speed_mps": 6.0,
+    "max_reverse_mps": 1.2,
+    "accel_time_constant_s": 0.36,
+    "max_accel_mps2": 5.2,
+    "max_brake_mps2": 8.0,
+    "drag_coeff": 0.055,
+    "rolling_resistance": 0.4,
+    "tire_friction": 1.05,
+    "understeer_gain": 0.018,
+    "drive": "rwd",
+    "motor_torque_nm": 1.4,
+    "gear_ratio": 1.0
+  },
+  "sensors": {
+    "lidar": {
+      "enabled": true,
+      "n_rays": 720,
+      "fov_rad": 4.712,
+      "range_max_m": 18.0,
+      "noise_std_m": 0.012,
+      "mount_m": [0.20, 0.0, 0.12],
+      "rate_hz": 12
+    },
+    "imu": {
+      "gyro_noise_std": 0.004,
+      "accel_noise_std": 0.045,
+      "gyro_bias": 0.0
+    },
+    "gps": {
+      "enabled": true,
+      "noise_std_m": 0.10,
+      "rate_hz": 10
+    },
+    "odom": {
+      "speed_noise_std": 0.01,
+      "pose_noise_std_m": 0.0
+    }
+  }
+}

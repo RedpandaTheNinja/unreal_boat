@@ -1,0 +1,370 @@
+{
+  "spec_version": "2.0",
+  "name": "boat_channel_gates_digital_twin",
+  "scenario": "boat",
+  "seed": 19,
+  "notes": "Sinuous channel scenario for twin-thruster boats with buoy gates and floating obstacles. Designed for LOS/path-following and obstacle-aware planning in mixed disturbance conditions.",
+  "vehicle_params": "vehicles/boat_twin_thruster_digital_twin.json",
+  "world": {
+    "size_m": [
+      170,
+      100
+    ],
+    "geo_origin": {
+      "lat": 39.7684,
+      "lon": -86.1581,
+      "alt": 0
+    },
+    "water": {
+      "level_m": 0.0,
+      "waves": {
+        "amp_m": 0.06,
+        "period_s": 2.8,
+        "dir_rad": 0.2
+      },
+      "shore": [
+        {
+          "label": "island",
+          "polygon_m": [
+            [
+              60,
+              30
+            ],
+            [
+              72,
+              34
+            ],
+            [
+              78,
+              42
+            ],
+            [
+              72,
+              52
+            ],
+            [
+              58,
+              47
+            ]
+          ],
+          "height_m": 1.4
+        }
+      ]
+    },
+    "disturbance": {
+      "wind": {
+        "speed_mps": 1.5,
+        "dir_rad": 0.0,
+        "gust_std_mps": 0.5,
+        "gust_period_s": 7
+      },
+      "current": {
+        "speed_mps": 0.2,
+        "dir_rad": 0.95
+      }
+    },
+    "lighting": {
+      "preset": "overcast"
+    }
+  },
+  "spawn": {
+    "xy_m": [
+      0.0,
+      0.0
+    ],
+    "yaw_rad": 0.0,
+    "jitter_m": 0.3,
+    "jitter_yaw_rad": 0.15
+  },
+  "track": {
+    "centerline_m": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        12.727,
+        4.534
+      ],
+      [
+        25.455,
+        5.939
+      ],
+      [
+        38.182,
+        3.244
+      ],
+      [
+        50.909,
+        -1.69
+      ],
+      [
+        63.636,
+        -5.458
+      ],
+      [
+        76.364,
+        -5.458
+      ],
+      [
+        89.091,
+        -1.69
+      ],
+      [
+        101.818,
+        3.244
+      ],
+      [
+        114.545,
+        5.939
+      ],
+      [
+        127.273,
+        4.534
+      ],
+      [
+        140.0,
+        0.0
+      ]
+    ],
+    "closed": false,
+    "width_m": 3.5,
+    "border": "none"
+  },
+  "gates": [
+    {
+      "label": "gate1",
+      "left_m": [
+        12.273,
+        6.482
+      ],
+      "right_m": [
+        13.181,
+        2.586
+      ]
+    },
+    {
+      "label": "gate2",
+      "left_m": [
+        25.556,
+        7.936
+      ],
+      "right_m": [
+        25.354,
+        3.942
+      ]
+    },
+    {
+      "label": "gate3",
+      "left_m": [
+        38.756,
+        5.16
+      ],
+      "right_m": [
+        37.608,
+        1.328
+      ]
+    },
+    {
+      "label": "gate4",
+      "left_m": [
+        51.556,
+        0.202
+      ],
+      "right_m": [
+        50.262,
+        -3.582
+      ]
+    },
+    {
+      "label": "gate5",
+      "left_m": [
+        63.929,
+        -3.48
+      ],
+      "right_m": [
+        63.343,
+        -7.436
+      ]
+    },
+    {
+      "label": "gate6",
+      "left_m": [
+        76.071,
+        -3.48
+      ],
+      "right_m": [
+        76.657,
+        -7.436
+      ]
+    },
+    {
+      "label": "gate7",
+      "left_m": [
+        88.444,
+        0.202
+      ],
+      "right_m": [
+        89.738,
+        -3.582
+      ]
+    },
+    {
+      "label": "gate8",
+      "left_m": [
+        101.244,
+        5.16
+      ],
+      "right_m": [
+        102.392,
+        1.328
+      ]
+    },
+    {
+      "label": "gate9",
+      "left_m": [
+        114.444,
+        7.936
+      ],
+      "right_m": [
+        114.646,
+        3.942
+      ]
+    },
+    {
+      "label": "gate10",
+      "left_m": [
+        127.727,
+        6.482
+      ],
+      "right_m": [
+        126.819,
+        2.586
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "label": "shore_marker_1",
+      "kind": "moored_boat",
+      "xy_m": [
+        34.0,
+        14.0
+      ],
+      "yaw_rad": 1.05,
+      "tag": "obstacle"
+    },
+    {
+      "label": "shore_marker_2",
+      "kind": "moored_boat",
+      "xy_m": [
+        85.0,
+        -14.0
+      ],
+      "yaw_rad": -1.05,
+      "tag": "obstacle"
+    },
+    {
+      "label": "floating_rock_1",
+      "kind": "rock",
+      "xy_m": [
+        101.0,
+        2.2
+      ],
+      "tag": "obstacle"
+    }
+  ],
+  "obstacle_fields": [
+    {
+      "kind": "buoy_yellow",
+      "count": 10,
+      "area_m": [
+        8,
+        -14,
+        132,
+        14
+      ],
+      "min_separation_m": 5.0,
+      "avoid_track_m": 3.5
+    }
+  ],
+  "task": {
+    "type": "gates",
+    "waypoints_m": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        25.455,
+        5.939
+      ],
+      [
+        50.909,
+        -1.69
+      ],
+      [
+        76.364,
+        -5.458
+      ],
+      [
+        101.818,
+        3.244
+      ],
+      [
+        127.273,
+        4.534
+      ],
+      [
+        140.0,
+        0.0
+      ]
+    ],
+    "tolerance_m": 2.0,
+    "max_time_s": 300,
+    "fail_on": [
+      "collision",
+      "out_of_bounds",
+      "timeout"
+    ],
+    "metrics": [
+      "gates_passed",
+      "time",
+      "cross_track_rms",
+      "collisions",
+      "control_effort"
+    ]
+  },
+  "randomization": {
+    "enabled": true,
+    "vary": [
+      "wind",
+      "current",
+      "waves",
+      "obstacle_layout",
+      "spawn_pose"
+    ],
+    "ranges": {
+      "wind_speed_mps": [
+        0,
+        3.5
+      ],
+      "wind_dir_rad": [
+        -3.14,
+        3.14
+      ],
+      "current_speed_mps": [
+        0,
+        0.5
+      ],
+      "current_dir_rad": [
+        -3.14,
+        3.14
+      ],
+      "wave_amp_m": [
+        0,
+        0.15
+      ]
+    }
+  }
+}

@@ -1,0 +1,287 @@
+{
+  "spec_version": "2.0",
+  "name": "boat_buoy_course",
+  "scenario": "boat",
+  "seed": 5,
+  "notes": "Open water, six red/green buoy gates 12 m apart with a lateral wiggle, 4 m wide. 3 m/s wind from the west with gusts, 0.3 m/s current to the north-east, small chop. Tests LOS guidance under disturbance.",
+  "vehicle_params": "vehicles/boat_twin_thruster_default.json",
+  "world": {
+    "size_m": [
+      160,
+      80
+    ],
+    "geo_origin": {
+      "lat": 39.7684,
+      "lon": -86.1581,
+      "alt": 0
+    },
+    "water": {
+      "level_m": 0.0,
+      "waves": {
+        "amp_m": 0.08,
+        "period_s": 2.5,
+        "dir_rad": 0.4
+      },
+      "shore": [
+        {
+          "label": "island",
+          "polygon_m": [
+            [
+              70,
+              20
+            ],
+            [
+              82,
+              24
+            ],
+            [
+              84,
+              32
+            ],
+            [
+              72,
+              34
+            ],
+            [
+              66,
+              27
+            ]
+          ],
+          "height_m": 1.5
+        }
+      ]
+    },
+    "disturbance": {
+      "wind": {
+        "speed_mps": 3.0,
+        "dir_rad": 0.0,
+        "gust_std_mps": 1.0,
+        "gust_period_s": 8
+      },
+      "current": {
+        "speed_mps": 0.3,
+        "dir_rad": 0.785
+      }
+    },
+    "lighting": {
+      "preset": "noon"
+    }
+  },
+  "spawn": {
+    "xy_m": [
+      0.0,
+      0.0
+    ],
+    "yaw_rad": 0.0,
+    "jitter_m": 0.5,
+    "jitter_yaw_rad": 0.2
+  },
+  "track": {
+    "centerline_m": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        10.0,
+        0.0
+      ],
+      [
+        22.0,
+        4.75
+      ],
+      [
+        34.0,
+        2.94
+      ],
+      [
+        46.0,
+        -2.94
+      ],
+      [
+        58.0,
+        -4.75
+      ],
+      [
+        70.0,
+        0.0
+      ],
+      [
+        77.08,
+        3.72
+      ]
+    ],
+    "closed": false,
+    "width_m": 4.0,
+    "border": "none"
+  },
+  "gates": [
+    {
+      "label": "gate1",
+      "left_m": [
+        9.07,
+        1.77
+      ],
+      "right_m": [
+        10.93,
+        -1.77
+      ]
+    },
+    {
+      "label": "gate2",
+      "left_m": [
+        21.68,
+        6.73
+      ],
+      "right_m": [
+        22.32,
+        2.78
+      ]
+    },
+    {
+      "label": "gate3",
+      "left_m": [
+        34.78,
+        4.78
+      ],
+      "right_m": [
+        33.22,
+        1.1
+      ]
+    },
+    {
+      "label": "gate4",
+      "left_m": [
+        46.78,
+        -1.1
+      ],
+      "right_m": [
+        45.22,
+        -4.78
+      ]
+    },
+    {
+      "label": "gate5",
+      "left_m": [
+        57.68,
+        -2.78
+      ],
+      "right_m": [
+        58.32,
+        -6.73
+      ]
+    },
+    {
+      "label": "gate6",
+      "left_m": [
+        69.07,
+        1.77
+      ],
+      "right_m": [
+        70.93,
+        -1.77
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "label": "moored_1",
+      "kind": "moored_boat",
+      "xy_m": [
+        40.0,
+        -12.0
+      ],
+      "yaw_rad": 1.2,
+      "tag": "obstacle"
+    }
+  ],
+  "obstacle_fields": [
+    {
+      "kind": "buoy_yellow",
+      "count": 8,
+      "area_m": [
+        5,
+        -25,
+        90,
+        25
+      ],
+      "min_separation_m": 6.0,
+      "avoid_track_m": 4.0
+    }
+  ],
+  "task": {
+    "type": "gates",
+    "waypoints_m": [
+      [
+        10.0,
+        0.0
+      ],
+      [
+        22.0,
+        4.75
+      ],
+      [
+        34.0,
+        2.94
+      ],
+      [
+        46.0,
+        -2.94
+      ],
+      [
+        58.0,
+        -4.75
+      ],
+      [
+        70.0,
+        0.0
+      ]
+    ],
+    "tolerance_m": 2.0,
+    "max_time_s": 240,
+    "fail_on": [
+      "collision",
+      "out_of_bounds",
+      "timeout"
+    ],
+    "metrics": [
+      "gates_passed",
+      "time",
+      "cross_track_rms",
+      "collisions",
+      "control_effort"
+    ]
+  },
+  "randomization": {
+    "enabled": true,
+    "vary": [
+      "wind",
+      "current",
+      "waves",
+      "obstacle_layout",
+      "spawn_pose"
+    ],
+    "ranges": {
+      "wind_speed_mps": [
+        0,
+        6
+      ],
+      "wind_dir_rad": [
+        -3.14,
+        3.14
+      ],
+      "current_speed_mps": [
+        0,
+        0.6
+      ],
+      "current_dir_rad": [
+        -3.14,
+        3.14
+      ],
+      "wave_amp_m": [
+        0,
+        0.2
+      ]
+    }
+  }
+}

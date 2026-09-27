@@ -1,0 +1,23 @@
+﻿{
+    "FileVersion":  3,
+    "Version":  2,
+    "VersionName":  "0.2-boatlab",
+    "FriendlyName":  "Boat Physics",
+    "Description":  "Calibratable twin-motor boat dynamics, UDP telemetry and BoatLab camera (RGB + ideal depth).",
+    "Category":  "Simulation",
+    "CreatedBy":  "",
+    "CreatedByURL":  "",
+    "DocsURL":  "",
+    "MarketplaceURL":  "",
+    "SupportURL":  "",
+    "EngineVersion":  "5.8.0",
+    "CanContainContent":  false,
+    "Modules":  [
+                    {
+                        "Name":  "BoatPhysics",
+                        "Type":  "Runtime",
+                        "LoadingPhase":  "Default"
+                    }
+                ],
+    "Installed":  true
+}

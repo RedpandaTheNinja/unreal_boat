@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Fable Vehicle Parameters",
+  "description": "Physical parameters of ONE vehicle. The same file drives the Unreal pawn, the pure-Python mock simulator, and the calibration fitters. Measure these on the real platform; docs/CALIBRATION.md says how.",
+  "type": "object",
+  "required": ["params_version", "name", "type"],
+  "properties": {
+    "params_version": { "const": "1.0" },
+    "name": { "type": "string" },
+    "type": { "enum": ["car_ackermann", "boat_twin_thruster"] },
+    "notes": { "type": "string" },
+    "calibration": {
+      "type": "object",
+      "description": "Provenance. Filled in by fit_car.py / fit_boat.py.",
+      "properties": {
+        "source": { "type": "string" },
+        "date": { "type": "string" },
+        "rms_error": { "type": "object", "additionalProperties": { "type": "number" } }
+      }
+    },
+
+    "common": {
+      "type": "object",
+      "required": ["mass_kg"],
+      "properties": {
+        "mass_kg": { "type": "number", "minimum": 0.01 },
+        "length_m": { "type": "number" },
+        "width_m": { "type": "number" },
+        "height_m": { "type": "number" },
+        "com_offset_m": { "type": "array", "items": { "type": "number" }, "minItems": 3, "maxItems": 3,
+                          "description": "Centre of mass offset from geometric centre, body frame." },
+        "yaw_inertia_kgm2": { "type": "number", "description": "Iz. If absent, mass*(L^2+W^2)/12 is used." },
+        "actuator_delay_s": { "type": "number", "default": 0.0, "description": "Pure transport delay from command to actuator. Measure it; it is never zero." },
+        "control_rate_hz": { "type": "number", "default": 50 }
+      }
+    },
+
+    "car": {
+      "type": "object",
+      "description": "Ackermann / RC-car style. Bicycle model in the mock sim, Chaos Vehicles in Unreal.",
+      "properties": {
+        "wheelbase_m": { "type": "number" },
+        "track_width_m": { "type": "number" },
+        "wheel_radius_m": { "type": "number" },
+        "com_height_m": { "type": "number", "default": 0.05 },
+        "max_steer_rad": { "type": "number", "description": "Steering angle at steer command = ±1." },
+        "steer_rate_rad_s": { "type": "number", "description": "Servo slew rate limit." },
+        "steer_deadband": { "type": "number", "default": 0.0 },
+        "steer_bias": { "type": "number", "default": 0.0, "description": "Command that actually drives straight." },
+        "max_speed_mps": { "type": "number" },
+        "max_reverse_mps": { "type": "number", "default": 1.0 },
+        "accel_time_constant_s": { "type": "number", "description": "First-order speed response to throttle." },
+        "max_accel_mps2": { "type": "number" },
+        "max_brake_mps2": { "type": "number" },
+        "drag_coeff": { "type": "number", "default": 0.0, "description": "Quadratic: F = -c v|v|" },
+        "rolling_resistance": { "type": "number", "default": 0.0, "description": "Linear: F = -r v" },
+        "tire_friction": { "type": "number", "default": 1.0 },
+        "understeer_gain": { "type": "number", "default": 0.0,
+          "description": "Ku in delta_eff = delta / (1 + Ku * v^2). 0 = pure kinematic. Fit from cornering data." },
+        "drive": { "enum": ["rwd", "fwd", "awd"], "default": "rwd" },
+        "motor_torque_nm": { "type": "number", "description": "Unreal only: peak wheel torque for Chaos engine curve." },
+        "gear_ratio": { "type": "number", "default": 1.0 }
+      }
+    },
+
+    "boat": {
+      "type": "object",
+      "description": "Twin fixed thrusters, differential steering. Fossen 3-DOF (surge, sway, yaw) in the mock sim; forces on a rigid body in Unreal.",
+      "properties": {
+        "beam_m": { "type": "number" },
+        "draft_m": { "type": "number" },
+        "thruster_offset_y_m": { "type": "number", "description": "Half the distance between thrusters." },
+        "thruster_offset_x_m": { "type": "number", "default": -0.4, "description": "Thruster x position (negative = astern of CoM)." },
+        "thruster_depth_m": { "type": "number", "default": 0.1 },
+        "max_thrust_fwd_n": { "type": "number", "description": "Per thruster at command = +1." },
+        "max_thrust_rev_n": { "type": "number", "description": "Per thruster at command = -1. Usually 40-60% of forward." },
+        "thrust_time_constant_s": { "type": "number", "description": "ESC + prop spin-up, first order." },
+        "thrust_deadband": { "type": "number", "default": 0.05 },
+        "added_mass_surge_kg": { "type": "number", "default": 0 },
+        "added_mass_sway_kg": { "type": "number", "default": 0 },
+        "added_inertia_yaw_kgm2": { "type": "number", "default": 0 },
+        "drag_surge_lin": { "type": "number", "description": "Xu: F = -Xu*u" },
+        "drag_surge_quad": { "type": "number", "description": "Xuu: F = -Xuu*u|u|" },
+        "drag_sway_lin": { "type": "number" },
+        "drag_sway_quad": { "type": "number" },
+        "drag_yaw_lin": { "type": "number", "description": "Nr: M = -Nr*r" },
+        "drag_yaw_quad": { "type": "number" },
+        "wind_area_m2": { "type": "number", "default": 0.2, "description": "Above-water lateral area for wind force." },
+        "wind_coeff": { "type": "number", "default": 1.0 },
+        "max_speed_mps": { "type": "number", "description": "Informational / used for normalization." },
+        "buoyancy_points": {
+          "type": "array",
+          "description": "Unreal only: body-frame points where buoyancy is applied (4 corners of the hull is fine).",
+          "items": { "type": "array", "items": { "type": "number" }, "minItems": 3, "maxItems": 3 }
+        }
+      }
+    },
+
+    "sensors": {
+      "type": "object",
+      "properties": {
+        "lidar": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "n_rays": { "type": "integer", "default": 540 },
+            "fov_rad": { "type": "number", "default": 4.712 },
+            "range_max_m": { "type": "number", "default": 20 },
+            "noise_std_m": { "type": "number", "default": 0.02 },
+            "mount_m": { "type": "array", "items": { "type": "number" }, "minItems": 3, "maxItems": 3, "default": [0.2, 0, 0.15] },
+            "rate_hz": { "type": "number", "default": 10 }
+          }
+        },
+        "imu": {
+          "type": "object",
+          "properties": {
+            "gyro_noise_std": { "type": "number", "default": 0.005 },
+            "accel_noise_std": { "type": "number", "default": 0.05 },
+            "gyro_bias": { "type": "number", "default": 0.0 }
+          }
+        },
+        "gps": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": false },
+            "noise_std_m": { "type": "number", "default": 1.5 },
+            "rate_hz": { "type": "number", "default": 5 }
+          }
+        },
+        "odom": {
+          "type": "object",
+          "properties": {
+            "speed_noise_std": { "type": "number", "default": 0.02 },
+            "pose_noise_std_m": { "type": "number", "default": 0.0, "description": "Set > 0 to stop your algorithm cheating with perfect pose." }
+          }
+        }
+      }
+    }
+  }
+}

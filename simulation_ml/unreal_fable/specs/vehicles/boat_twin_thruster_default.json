@@ -1,0 +1,50 @@
+{
+  "params_version": "1.0",
+  "name": "boat_twin_thruster_default",
+  "type": "boat_twin_thruster",
+  "notes": "Placeholder numbers for a ~1.2 m twin-thruster autonomous surface vessel (two T200-class thrusters). REPLACE with measured values - see docs/CALIBRATION.md. Drag terms are the ones you will get most wrong by guessing; a 60-second coast-down test fixes them.",
+  "calibration": { "source": "defaults", "date": "", "rms_error": {} },
+
+  "common": {
+    "mass_kg": 16.0,
+    "length_m": 1.20,
+    "width_m": 0.60,
+    "height_m": 0.35,
+    "com_offset_m": [0.0, 0.0, -0.05],
+    "yaw_inertia_kgm2": 2.4,
+    "actuator_delay_s": 0.06,
+    "control_rate_hz": 20
+  },
+
+  "boat": {
+    "beam_m": 0.60,
+    "draft_m": 0.12,
+    "thruster_offset_y_m": 0.26,
+    "thruster_offset_x_m": -0.45,
+    "thruster_depth_m": 0.10,
+    "max_thrust_fwd_n": 22.0,
+    "max_thrust_rev_n": 12.0,
+    "thrust_time_constant_s": 0.25,
+    "thrust_deadband": 0.05,
+    "added_mass_surge_kg": 1.5,
+    "added_mass_sway_kg": 12.0,
+    "added_inertia_yaw_kgm2": 1.0,
+    "drag_surge_lin": 2.0,
+    "drag_surge_quad": 9.0,
+    "drag_sway_lin": 15.0,
+    "drag_sway_quad": 60.0,
+    "drag_yaw_lin": 1.8,
+    "drag_yaw_quad": 3.0,
+    "wind_area_m2": 0.25,
+    "wind_coeff": 1.1,
+    "max_speed_mps": 2.0,
+    "buoyancy_points": [[0.45, 0.22, -0.1], [0.45, -0.22, -0.1], [-0.45, 0.22, -0.1], [-0.45, -0.22, -0.1]]
+  },
+
+  "sensors": {
+    "lidar": { "enabled": true, "n_rays": 360, "fov_rad": 6.283, "range_max_m": 30.0, "noise_std_m": 0.03, "mount_m": [0.3, 0.0, 0.4], "rate_hz": 10 },
+    "imu": { "gyro_noise_std": 0.004, "accel_noise_std": 0.08, "gyro_bias": 0.001 },
+    "gps": { "enabled": true, "noise_std_m": 1.2, "rate_hz": 5 },
+    "odom": { "speed_noise_std": 0.05, "pose_noise_std_m": 0.0 }
+  }
+}

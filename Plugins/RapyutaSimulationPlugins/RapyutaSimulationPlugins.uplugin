@@ -1,0 +1,12 @@
+{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "0.1-windows-physics-port",
+  "FriendlyName": "TurtleBot Windows Physics Port",
+  "Description": "Physics-only Burger port and rigid tandem. No ROS/rclUE runtime. Original asset mount and class names retained for physics defaults.",
+  "Category": "Simulation",
+  "CanContainContent": true,
+  "EnabledByDefault": false,
+  "Modules": [{"Name": "RapyutaSimulationPlugins", "Type": "Runtime", "LoadingPhase": "Default", "PlatformAllowList": ["Win64"]}],
+  "Plugins": [{"Name": "ChaosVehiclesPlugin", "Enabled": true}]
+}

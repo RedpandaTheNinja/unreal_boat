@@ -1,0 +1,1361 @@
+{
+  "schema": "boatlab_course_v1",
+  "name": "aimm_icc_2025",
+  "source": "boat_course/AIMM-ICC Competition Course Details 12-13 2025.pdf (page 2 map, pages 5-14 rules)",
+  "units": "metres, radians; local ENU x=east y=north; heading CCW from east",
+  "unreal_mapping": {
+    "ue_x_cm": "100*x",
+    "ue_y_cm": "-100*y",
+    "ue_yaw_deg": "-degrees(heading)",
+    "water_z_cm": 0.0
+  },
+  "geo_origin": {
+    "lat": 41.70238808,
+    "lon": -85.02280627,
+    "note": "Google Earth view centre from the PDF, assigned to local (0, 0). NOT surveyed."
+  },
+  "params": {
+    "anchor_ft": [
+      115.0,
+      32.0
+    ],
+    "gate_width_ft": 10.0,
+    "buoy_diameter_m": 0.27,
+    "buoy_height_above_water_m": 0.55,
+    "identify_spacing_ft": 3.2,
+    "identify_row_offset_ft": 2.2,
+    "identify_center_dx_ft": -195.0,
+    "launch_target_diameter_ft": 10.0,
+    "launch_target_offset_ft": 15.0,
+    "case_size_in": [
+      13.0,
+      9.7,
+      5.8
+    ],
+    "return_dx_ft": -15.0,
+    "detector_radius_m": 6.0,
+    "lake_x_ft": [
+      -190.0,
+      160.0
+    ],
+    "lake_y_ft": [
+      -100.0,
+      100.0
+    ],
+    "shore_margin_m": 1.2,
+    "geo_origin": {
+      "lat": 41.70238808,
+      "lon": -85.02280627,
+      "note": "Google Earth view centre from the PDF, assigned to local (0, 0). NOT surveyed."
+    },
+    "start_pose_local": [
+      30.48,
+      4.4196,
+      3.141592653589793
+    ]
+  },
+  "water": {
+    "xmin": -57.912,
+    "xmax": 48.768,
+    "ymin": -30.48,
+    "ymax": 30.48,
+    "margin": 1.2
+  },
+  "keepout": [
+    {
+      "id": "pier_ns",
+      "style": "pier",
+      "height_m": 0.5,
+      "polygon": [
+        [
+          39.929,
+          2.134
+        ],
+        [
+          41.758,
+          2.134
+        ],
+        [
+          41.758,
+          30.48
+        ],
+        [
+          39.929,
+          30.48
+        ]
+      ]
+    },
+    {
+      "id": "pier_ew",
+      "style": "pier",
+      "height_m": 0.5,
+      "polygon": [
+        [
+          26.822,
+          -0.305
+        ],
+        [
+          47.244,
+          -0.305
+        ],
+        [
+          47.244,
+          2.134
+        ],
+        [
+          26.822,
+          2.134
+        ]
+      ]
+    },
+    {
+      "id": "finger_w0",
+      "style": "pier",
+      "height_m": 0.45,
+      "polygon": [
+        [
+          36.271,
+          5.867
+        ],
+        [
+          39.929,
+          5.867
+        ],
+        [
+          39.929,
+          6.325
+        ],
+        [
+          36.271,
+          6.325
+        ]
+      ]
+    },
+    {
+      "id": "finger_e0",
+      "style": "pier",
+      "height_m": 0.45,
+      "polygon": [
+        [
+          41.758,
+          5.867
+        ],
+        [
+          45.415,
+          5.867
+        ],
+        [
+          45.415,
+          6.325
+        ],
+        [
+          41.758,
+          6.325
+        ]
+      ]
+    },
+    {
+      "id": "finger_w1",
+      "style": "pier",
+      "height_m": 0.45,
+      "polygon": [
+        [
+          36.271,
+          8.915
+        ],
+        [
+          39.929,
+          8.915
+        ],
+        [
+          39.929,
+          9.373
+        ],
+        [
+          36.271,
+          9.373
+        ]
+      ]
+    },
+    {
+      "id": "finger_e1",
+      "style": "pier",
+      "height_m": 0.45,
+      "polygon": [
+        [
+          41.758,
+          8.915
+        ],
+        [
+          45.415,
+          8.915
+        ],
+        [
+          45.415,
+          9.373
+        ],
+        [
+          41.758,
+          9.373
+        ]
+      ]
+    },
+    {
+      "id": "finger_w2",
+      "style": "pier",
+      "height_m": 0.45,
+      "polygon": [
+        [
+          36.271,
+          11.963
+        ],
+        [
+          39.929,
+          11.963
+        ],
+        [
+          39.929,
+          12.421
+        ],
+        [
+          36.271,
+          12.421
+        ]
+      ]
+    },
+    {
+      "id": "finger_e2",
+      "style": "pier",
+      "height_m": 0.45,
+      "polygon": [
+        [
+          41.758,
+          11.963
+        ],
+        [
+          45.415,
+          11.963
+        ],
+        [
+          45.415,
+          12.421
+        ],
+        [
+          41.758,
+          12.421
+        ]
+      ]
+    },
+    {
+      "id": "finger_w3",
+      "style": "pier",
+      "height_m": 0.45,
+      "polygon": [
+        [
+          36.271,
+          15.011
+        ],
+        [
+          39.929,
+          15.011
+        ],
+        [
+          39.929,
+          15.469
+        ],
+        [
+          36.271,
+          15.469
+        ]
+      ]
+    },
+    {
+      "id": "finger_e3",
+      "style": "pier",
+      "height_m": 0.45,
+      "polygon": [
+        [
+          41.758,
+          15.011
+        ],
+        [
+          45.415,
+          15.011
+        ],
+        [
+          45.415,
+          15.469
+        ],
+        [
+          41.758,
+          15.469
+        ]
+      ]
+    },
+    {
+      "id": "finger_w4",
+      "style": "pier",
+      "height_m": 0.45,
+      "polygon": [
+        [
+          36.271,
+          18.059
+        ],
+        [
+          39.929,
+          18.059
+        ],
+        [
+          39.929,
+          18.517
+        ],
+        [
+          36.271,
+          18.517
+        ]
+      ]
+    },
+    {
+      "id": "finger_e4",
+      "style": "pier",
+      "height_m": 0.45,
+      "polygon": [
+        [
+          41.758,
+          18.059
+        ],
+        [
+          45.415,
+          18.059
+        ],
+        [
+          45.415,
+          18.517
+        ],
+        [
+          41.758,
+          18.517
+        ]
+      ]
+    },
+    {
+      "id": "finger_w5",
+      "style": "pier",
+      "height_m": 0.45,
+      "polygon": [
+        [
+          36.271,
+          21.107
+        ],
+        [
+          39.929,
+          21.107
+        ],
+        [
+          39.929,
+          21.565
+        ],
+        [
+          36.271,
+          21.565
+        ]
+      ]
+    },
+    {
+      "id": "finger_e5",
+      "style": "pier",
+      "height_m": 0.45,
+      "polygon": [
+        [
+          41.758,
+          21.107
+        ],
+        [
+          45.415,
+          21.107
+        ],
+        [
+          45.415,
+          21.565
+        ],
+        [
+          41.758,
+          21.565
+        ]
+      ]
+    },
+    {
+      "id": "finger_w6",
+      "style": "pier",
+      "height_m": 0.45,
+      "polygon": [
+        [
+          36.271,
+          24.155
+        ],
+        [
+          39.929,
+          24.155
+        ],
+        [
+          39.929,
+          24.613
+        ],
+        [
+          36.271,
+          24.613
+        ]
+      ]
+    },
+    {
+      "id": "finger_e6",
+      "style": "pier",
+      "height_m": 0.45,
+      "polygon": [
+        [
+          41.758,
+          24.155
+        ],
+        [
+          45.415,
+          24.155
+        ],
+        [
+          45.415,
+          24.613
+        ],
+        [
+          41.758,
+          24.613
+        ]
+      ]
+    },
+    {
+      "id": "finger_w7",
+      "style": "pier",
+      "height_m": 0.45,
+      "polygon": [
+        [
+          36.271,
+          27.203
+        ],
+        [
+          39.929,
+          27.203
+        ],
+        [
+          39.929,
+          27.661
+        ],
+        [
+          36.271,
+          27.661
+        ]
+      ]
+    },
+    {
+      "id": "finger_e7",
+      "style": "pier",
+      "height_m": 0.45,
+      "polygon": [
+        [
+          41.758,
+          27.203
+        ],
+        [
+          45.415,
+          27.203
+        ],
+        [
+          45.415,
+          27.661
+        ],
+        [
+          41.758,
+          27.661
+        ]
+      ]
+    },
+    {
+      "id": "boat_w0",
+      "style": "boat",
+      "height_m": 0.9,
+      "polygon": [
+        [
+          35.966,
+          6.858
+        ],
+        [
+          39.776,
+          6.858
+        ],
+        [
+          39.776,
+          8.382
+        ],
+        [
+          35.966,
+          8.382
+        ]
+      ]
+    },
+    {
+      "id": "boat_e0",
+      "style": "boat",
+      "height_m": 0.9,
+      "polygon": [
+        [
+          41.91,
+          6.858
+        ],
+        [
+          46.025,
+          6.858
+        ],
+        [
+          46.025,
+          8.382
+        ],
+        [
+          41.91,
+          8.382
+        ]
+      ]
+    },
+    {
+      "id": "boat_w1",
+      "style": "boat",
+      "height_m": 0.9,
+      "polygon": [
+        [
+          35.966,
+          9.906
+        ],
+        [
+          39.776,
+          9.906
+        ],
+        [
+          39.776,
+          11.43
+        ],
+        [
+          35.966,
+          11.43
+        ]
+      ]
+    },
+    {
+      "id": "boat_e1",
+      "style": "boat",
+      "height_m": 0.9,
+      "polygon": [
+        [
+          41.91,
+          9.906
+        ],
+        [
+          46.025,
+          9.906
+        ],
+        [
+          46.025,
+          11.43
+        ],
+        [
+          41.91,
+          11.43
+        ]
+      ]
+    },
+    {
+      "id": "boat_w2",
+      "style": "boat",
+      "height_m": 0.9,
+      "polygon": [
+        [
+          35.966,
+          12.954
+        ],
+        [
+          39.776,
+          12.954
+        ],
+        [
+          39.776,
+          14.478
+        ],
+        [
+          35.966,
+          14.478
+        ]
+      ]
+    },
+    {
+      "id": "boat_e2",
+      "style": "boat",
+      "height_m": 0.9,
+      "polygon": [
+        [
+          41.91,
+          12.954
+        ],
+        [
+          46.025,
+          12.954
+        ],
+        [
+          46.025,
+          14.478
+        ],
+        [
+          41.91,
+          14.478
+        ]
+      ]
+    },
+    {
+      "id": "boat_w3",
+      "style": "boat",
+      "height_m": 0.9,
+      "polygon": [
+        [
+          35.966,
+          16.002
+        ],
+        [
+          39.776,
+          16.002
+        ],
+        [
+          39.776,
+          17.526
+        ],
+        [
+          35.966,
+          17.526
+        ]
+      ]
+    },
+    {
+      "id": "boat_e3",
+      "style": "boat",
+      "height_m": 0.9,
+      "polygon": [
+        [
+          41.91,
+          16.002
+        ],
+        [
+          46.025,
+          16.002
+        ],
+        [
+          46.025,
+          17.526
+        ],
+        [
+          41.91,
+          17.526
+        ]
+      ]
+    },
+    {
+      "id": "boat_w4",
+      "style": "boat",
+      "height_m": 0.9,
+      "polygon": [
+        [
+          35.966,
+          19.05
+        ],
+        [
+          39.776,
+          19.05
+        ],
+        [
+          39.776,
+          20.574
+        ],
+        [
+          35.966,
+          20.574
+        ]
+      ]
+    },
+    {
+      "id": "boat_e4",
+      "style": "boat",
+      "height_m": 0.9,
+      "polygon": [
+        [
+          41.91,
+          19.05
+        ],
+        [
+          46.025,
+          19.05
+        ],
+        [
+          46.025,
+          20.574
+        ],
+        [
+          41.91,
+          20.574
+        ]
+      ]
+    },
+    {
+      "id": "boat_w5",
+      "style": "boat",
+      "height_m": 0.9,
+      "polygon": [
+        [
+          35.966,
+          22.098
+        ],
+        [
+          39.776,
+          22.098
+        ],
+        [
+          39.776,
+          23.622
+        ],
+        [
+          35.966,
+          23.622
+        ]
+      ]
+    },
+    {
+      "id": "boat_e5",
+      "style": "boat",
+      "height_m": 0.9,
+      "polygon": [
+        [
+          41.91,
+          22.098
+        ],
+        [
+          46.025,
+          22.098
+        ],
+        [
+          46.025,
+          23.622
+        ],
+        [
+          41.91,
+          23.622
+        ]
+      ]
+    },
+    {
+      "id": "boat_w6",
+      "style": "boat",
+      "height_m": 0.9,
+      "polygon": [
+        [
+          35.966,
+          25.146
+        ],
+        [
+          39.776,
+          25.146
+        ],
+        [
+          39.776,
+          26.67
+        ],
+        [
+          35.966,
+          26.67
+        ]
+      ]
+    },
+    {
+      "id": "boat_e6",
+      "style": "boat",
+      "height_m": 0.9,
+      "polygon": [
+        [
+          41.91,
+          25.146
+        ],
+        [
+          46.025,
+          25.146
+        ],
+        [
+          46.025,
+          26.67
+        ],
+        [
+          41.91,
+          26.67
+        ]
+      ]
+    },
+    {
+      "id": "finger_s0",
+      "style": "pier",
+      "height_m": 0.45,
+      "polygon": [
+        [
+          31.166,
+          -6.096
+        ],
+        [
+          31.623,
+          -6.096
+        ],
+        [
+          31.623,
+          -0.305
+        ],
+        [
+          31.166,
+          -0.305
+        ]
+      ]
+    },
+    {
+      "id": "finger_s1",
+      "style": "pier",
+      "height_m": 0.45,
+      "polygon": [
+        [
+          36.043,
+          -6.096
+        ],
+        [
+          36.5,
+          -6.096
+        ],
+        [
+          36.5,
+          -0.305
+        ],
+        [
+          36.043,
+          -0.305
+        ]
+      ]
+    },
+    {
+      "id": "finger_s2",
+      "style": "pier",
+      "height_m": 0.45,
+      "polygon": [
+        [
+          40.919,
+          -6.096
+        ],
+        [
+          41.377,
+          -6.096
+        ],
+        [
+          41.377,
+          -0.305
+        ],
+        [
+          40.919,
+          -0.305
+        ]
+      ]
+    },
+    {
+      "id": "boat_s0",
+      "style": "boat",
+      "height_m": 1.0,
+      "polygon": [
+        [
+          27.584,
+          -6.096
+        ],
+        [
+          30.328,
+          -6.096
+        ],
+        [
+          30.328,
+          -0.457
+        ],
+        [
+          27.584,
+          -0.457
+        ]
+      ]
+    },
+    {
+      "id": "boat_s1",
+      "style": "boat",
+      "height_m": 1.0,
+      "polygon": [
+        [
+          32.461,
+          -6.096
+        ],
+        [
+          35.204,
+          -6.096
+        ],
+        [
+          35.204,
+          -0.457
+        ],
+        [
+          32.461,
+          -0.457
+        ]
+      ]
+    },
+    {
+      "id": "boat_s2",
+      "style": "boat",
+      "height_m": 1.0,
+      "polygon": [
+        [
+          37.338,
+          -6.096
+        ],
+        [
+          40.081,
+          -6.096
+        ],
+        [
+          40.081,
+          -0.457
+        ],
+        [
+          37.338,
+          -0.457
+        ]
+      ]
+    },
+    {
+      "id": "boat_s3",
+      "style": "boat",
+      "height_m": 1.0,
+      "polygon": [
+        [
+          42.215,
+          -6.096
+        ],
+        [
+          44.958,
+          -6.096
+        ],
+        [
+          44.958,
+          -0.457
+        ],
+        [
+          42.215,
+          -0.457
+        ]
+      ]
+    },
+    {
+      "id": "pontoon_w",
+      "style": "boat",
+      "height_m": 1.1,
+      "polygon": [
+        [
+          23.47,
+          -3.048
+        ],
+        [
+          26.822,
+          -3.048
+        ],
+        [
+          26.822,
+          2.743
+        ],
+        [
+          23.47,
+          2.743
+        ]
+      ]
+    }
+  ],
+  "start_pose": [
+    30.48,
+    4.4196,
+    3.141592653589793
+  ],
+  "dock_pose": [
+    30.48,
+    4.4196,
+    3.141592653589793
+  ],
+  "objects": [
+    {
+      "id": "start_blue",
+      "kind": "buoy",
+      "color": "blue",
+      "x": 35.052,
+      "y": 9.7536,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "start_marker"
+    },
+    {
+      "id": "gateA_red",
+      "kind": "buoy",
+      "color": "red",
+      "x": 21.336,
+      "y": 11.2776,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "gate",
+      "group": "gateA"
+    },
+    {
+      "id": "gateA_green",
+      "kind": "buoy",
+      "color": "green",
+      "x": 21.336,
+      "y": 8.2296,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "gate",
+      "group": "gateA"
+    },
+    {
+      "id": "slalom1_red",
+      "kind": "buoy",
+      "color": "red",
+      "x": 12.192,
+      "y": 9.7536,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "slalom",
+      "group": "slalom"
+    },
+    {
+      "id": "slalom2_green",
+      "kind": "buoy",
+      "color": "green",
+      "x": 3.048,
+      "y": 9.7536,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "slalom",
+      "group": "slalom"
+    },
+    {
+      "id": "slalom3_red",
+      "kind": "buoy",
+      "color": "red",
+      "x": -6.096,
+      "y": 9.7536,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "slalom",
+      "group": "slalom"
+    },
+    {
+      "id": "slalom4_green",
+      "kind": "buoy",
+      "color": "green",
+      "x": -15.24,
+      "y": 9.7536,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "slalom",
+      "group": "slalom"
+    },
+    {
+      "id": "gateB_red",
+      "kind": "buoy",
+      "color": "red",
+      "x": -24.384,
+      "y": 11.2776,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "gate",
+      "group": "gateB"
+    },
+    {
+      "id": "gateB_green",
+      "kind": "buoy",
+      "color": "green",
+      "x": -24.384,
+      "y": 8.2296,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "gate",
+      "group": "gateB"
+    },
+    {
+      "id": "ch_green_top",
+      "kind": "buoy",
+      "color": "green",
+      "x": -28.956,
+      "y": 9.7536,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "channel",
+      "group": "channel_east"
+    },
+    {
+      "id": "ch_green_mid",
+      "kind": "buoy",
+      "color": "green",
+      "x": -28.956,
+      "y": 0.6096,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "channel",
+      "group": "channel_east"
+    },
+    {
+      "id": "ch_green_bot",
+      "kind": "buoy",
+      "color": "green",
+      "x": -28.956,
+      "y": -8.5344,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "channel",
+      "group": "channel_east"
+    },
+    {
+      "id": "ch_red_top",
+      "kind": "buoy",
+      "color": "red",
+      "x": -41.148,
+      "y": 9.7536,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "channel",
+      "group": "channel_west"
+    },
+    {
+      "id": "ch_red_mid",
+      "kind": "buoy",
+      "color": "red",
+      "x": -41.148,
+      "y": 0.6096,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "channel",
+      "group": "channel_west"
+    },
+    {
+      "id": "ch_red_bot",
+      "kind": "buoy",
+      "color": "red",
+      "x": -41.148,
+      "y": -8.5344,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "channel",
+      "group": "channel_west"
+    },
+    {
+      "id": "detector_east",
+      "kind": "detector",
+      "color": "pink",
+      "x": -28.956,
+      "y": 5.4864,
+      "radius": 0.15,
+      "height": 0.9,
+      "detect_radius": 6.0,
+      "role": "detector"
+    },
+    {
+      "id": "detector_west",
+      "kind": "detector",
+      "color": "pink",
+      "x": -41.148,
+      "y": -3.9624,
+      "radius": 0.15,
+      "height": 0.9,
+      "detect_radius": 6.0,
+      "role": "detector"
+    },
+    {
+      "id": "identify_blue",
+      "kind": "buoy",
+      "color": "blue",
+      "x": -25.847,
+      "y": -7.8638,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "identify"
+    },
+    {
+      "id": "identify_orange",
+      "kind": "buoy",
+      "color": "orange",
+      "x": -24.8717,
+      "y": -7.8638,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "identify"
+    },
+    {
+      "id": "identify_purple",
+      "kind": "buoy",
+      "color": "purple",
+      "x": -23.8963,
+      "y": -7.8638,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "identify"
+    },
+    {
+      "id": "identify_yellow",
+      "kind": "buoy",
+      "color": "yellow",
+      "x": -22.921,
+      "y": -7.8638,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "identify"
+    },
+    {
+      "id": "zebra",
+      "kind": "buoy",
+      "color": "zebra",
+      "x": -9.144,
+      "y": -8.5344,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "deploy"
+    },
+    {
+      "id": "black",
+      "kind": "buoy",
+      "color": "black",
+      "x": 6.096,
+      "y": -8.5344,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "launch_area"
+    },
+    {
+      "id": "launch_target",
+      "kind": "target",
+      "color": "orange",
+      "x": 6.096,
+      "y": -3.9624,
+      "radius": 1.524,
+      "height": 0.2,
+      "mat_radius": 1.2192,
+      "role": "launch_target"
+    },
+    {
+      "id": "case",
+      "kind": "case",
+      "color": "yellow",
+      "x": 21.336,
+      "y": -8.5344,
+      "size": [
+        0.33,
+        0.246,
+        0.147
+      ],
+      "radius": 0.206,
+      "height": 0.147,
+      "role": "recover"
+    },
+    {
+      "id": "return_blue",
+      "kind": "buoy",
+      "color": "blue",
+      "x": 30.48,
+      "y": -8.5344,
+      "radius": 0.135,
+      "height": 0.55,
+      "role": "return"
+    }
+  ],
+  "gates": [
+    {
+      "id": "gateA",
+      "red": "gateA_red",
+      "green": "gateA_green"
+    },
+    {
+      "id": "gateB",
+      "red": "gateB_red",
+      "green": "gateB_green"
+    },
+    {
+      "id": "channel_entry",
+      "red": "ch_red_top",
+      "green": "ch_green_top"
+    },
+    {
+      "id": "channel_exit",
+      "red": "ch_red_bot",
+      "green": "ch_green_bot"
+    }
+  ],
+  "challenges": {
+    "1_gate": {
+      "gate": "gateA"
+    },
+    "2_dodge": {
+      "entry_gate": "gateA",
+      "exit_gate": "gateB",
+      "buoys": [
+        "slalom1_red",
+        "slalom2_green",
+        "slalom3_red",
+        "slalom4_green"
+      ]
+    },
+    "3_evade": {
+      "entry_gate": "channel_entry",
+      "exit_gate": "channel_exit",
+      "banks": [
+        "ch_green_top",
+        "ch_green_mid",
+        "ch_green_bot",
+        "ch_red_top",
+        "ch_red_mid",
+        "ch_red_bot"
+      ],
+      "detectors": [
+        "detector_east",
+        "detector_west"
+      ]
+    },
+    "4_identify": {
+      "candidates": [
+        "identify_blue",
+        "identify_orange",
+        "identify_purple",
+        "identify_yellow"
+      ],
+      "default_color": "blue"
+    },
+    "5_deploy": {
+      "target": "zebra",
+      "success_radius_m": 1.8288000000000002
+    },
+    "6_launch": {
+      "area_buoy": "black",
+      "target": "launch_target"
+    },
+    "7_recover": {
+      "target": "case"
+    },
+    "9_return": {
+      "target": "return_blue"
+    }
+  },
+  "rules": {
+    "green_on": "port",
+    "red_on": "starboard",
+    "note": "PDF p5: pass on the RIGHT side of green buoys and LEFT side of red buoys, i.e. green stays on the boat's port side, red on the starboard side."
+  }
+}

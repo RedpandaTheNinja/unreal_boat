@@ -1,0 +1,75 @@
+{
+  "params_version": "1.0",
+  "name": "boat_twin_thruster_digital_twin",
+  "type": "boat_twin_thruster",
+  "notes": "Digital-twin baseline for a compact two-thruster surface boat on Jetson/Orange Cube+ stack. Replace with measured parameters after RTK + IMU identification.",
+  "calibration": {
+    "source": "placeholder",
+    "date": "",
+    "rms_error": {}
+  },
+  "common": {
+    "mass_kg": 15.2,
+    "length_m": 1.15,
+    "width_m": 0.58,
+    "height_m": 0.36,
+    "com_offset_m": [0.0, 0.0, -0.05],
+    "yaw_inertia_kgm2": 1.9,
+    "actuator_delay_s": 0.06,
+    "control_rate_hz": 20
+  },
+  "boat": {
+    "beam_m": 0.58,
+    "draft_m": 0.11,
+    "thruster_offset_y_m": 0.24,
+    "thruster_offset_x_m": -0.36,
+    "thruster_depth_m": 0.08,
+    "max_thrust_fwd_n": 26.0,
+    "max_thrust_rev_n": 12.5,
+    "thrust_time_constant_s": 0.24,
+    "thrust_deadband": 0.04,
+    "added_mass_surge_kg": 2.0,
+    "added_mass_sway_kg": 11.0,
+    "added_inertia_yaw_kgm2": 1.2,
+    "drag_surge_lin": 1.9,
+    "drag_surge_quad": 8.5,
+    "drag_sway_lin": 13.0,
+    "drag_sway_quad": 52.0,
+    "drag_yaw_lin": 1.6,
+    "drag_yaw_quad": 2.8,
+    "wind_area_m2": 0.24,
+    "wind_coeff": 1.05,
+    "max_speed_mps": 2.2,
+    "buoyancy_points": [
+      [0.47, 0.22, -0.12],
+      [0.47, -0.22, -0.12],
+      [-0.47, 0.22, -0.12],
+      [-0.47, -0.22, -0.12]
+    ]
+  },
+  "sensors": {
+    "lidar": {
+      "enabled": true,
+      "n_rays": 540,
+      "fov_rad": 6.283,
+      "range_max_m": 35.0,
+      "noise_std_m": 0.04,
+      "mount_m": [0.30, 0.0, 0.35],
+      "rate_hz": 10
+    },
+    "imu": {
+      "gyro_noise_std": 0.004,
+      "accel_noise_std": 0.06,
+      "gyro_bias": 0.001
+    },
+    "gps": {
+      "enabled": true,
+      "noise_std_m": 0.20,
+      "rate_hz": 5
+    },
+    "odom": {
+      "speed_noise_std": 0.04,
+      "pose_noise_std_m": 0.0
+    }
+  }
+}

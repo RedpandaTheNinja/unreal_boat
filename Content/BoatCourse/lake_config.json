@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "level": "/Game/BoatCourse/Lake_300x80ft",
+  "water_surface": {
+    "length_ft": 300,
+    "width_ft": 80,
+    "length_m": 91.44,
+    "width_m": 24.384,
+    "center_ue_cm": [
+      0,
+      0,
+      0
+    ],
+    "bounds_ue_cm": {
+      "min": [
+        -4572,
+        -1219.2,
+        0
+      ],
+      "max": [
+        4572,
+        1219.2,
+        0
+      ]
+    }
+  },
+  "shore": {
+    "outside_water_bounds": true
+  },
+  "lakebed": {
+    "depth_m": 2,
+    "status": "placeholder_not_surveyed"
+  },
+  "status": "visual_course_environment",
+  "water_dynamics": "buoyancy_and_hydrodynamics_not_implemented",
+  "course_obstacles": "not_placed",
+  "georeferencing": "not_surveyed",
+  "source": "User requested 300 ft by 80 ft lake"
+}

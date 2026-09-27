@@ -1,0 +1,294 @@
+{
+  "mission": {
+    "name": "aimm_full",
+    "index": 8,
+    "paused": false,
+    "aborted": false,
+    "finished": true,
+    "tasks": [
+      {
+        "index": 0,
+        "type": "gate",
+        "challenge": 1,
+        "status": "done",
+        "label": "C1 Gate navigation",
+        "result": {
+          "status": "done"
+        },
+        "duration_s": 24.6
+      },
+      {
+        "index": 1,
+        "type": "slalom",
+        "challenge": 2,
+        "status": "done",
+        "label": "C2 Dodge (slalom)",
+        "result": {
+          "status": "done"
+        },
+        "duration_s": 49.3
+      },
+      {
+        "index": 2,
+        "type": "channel",
+        "challenge": 3,
+        "status": "done",
+        "label": "C3 Evade (channel)",
+        "result": {
+          "status": "done",
+          "planned_min_detector_m": 6.91
+        },
+        "duration_s": 42.2
+      },
+      {
+        "index": 3,
+        "type": "identify",
+        "challenge": 4,
+        "status": "done",
+        "label": "C4 Identify (contact colour)",
+        "result": {
+          "status": "done",
+          "color": "blue",
+          "target": "identify_blue"
+        },
+        "duration_s": 30.8
+      },
+      {
+        "index": 4,
+        "type": "deploy",
+        "challenge": 5,
+        "status": "done",
+        "label": "C5 Deploy sensor at zebra buoy",
+        "result": {
+          "status": "done",
+          "result": {
+            "action": "deploy",
+            "ok": true,
+            "landing": [
+              -8.954485560559826,
+              -7.999065285057653
+            ],
+            "distance_m": 0.5678899363245726,
+            "success": true,
+            "limit_m": 1.8288000000000002,
+            "t": 172.35000000000758,
+            "attempt": 0
+          }
+        },
+        "duration_s": 29.9
+      },
+      {
+        "index": 5,
+        "type": "launch",
+        "challenge": 6,
+        "status": "done",
+        "label": "C6 Launch at target",
+        "result": {
+          "status": "done",
+          "result": {
+            "action": "launch",
+            "ok": true,
+            "landing": [
+              5.549872143416439,
+              -3.908725865669338
+            ],
+            "distance_m": 0.5487590987242947,
+            "success": true,
+            "target_radius_m": 1.524,
+            "boat_to_area_buoy_m": 4.917806466174345,
+            "t": 221.19999999996315,
+            "attempt": 0
+          }
+        },
+        "duration_s": 48.7
+      },
+      {
+        "index": 6,
+        "type": "recover",
+        "challenge": 7,
+        "status": "done",
+        "label": "C7 Recover floating case",
+        "result": {
+          "status": "done",
+          "result": {
+            "action": "recover",
+            "ok": true,
+            "success": 1.0,
+            "along_m": 0.012932074465160093,
+            "outward_m": 0.14342190493524526,
+            "hide": "case",
+            "value": 2,
+            "t": 261.89999999992614,
+            "attempt": 0
+          }
+        },
+        "duration_s": 40.7
+      },
+      {
+        "index": 7,
+        "type": "return",
+        "challenge": 9,
+        "status": "done",
+        "label": "C9 Return + dock",
+        "result": {
+          "status": "done",
+          "dock": "done"
+        },
+        "duration_s": 39.5
+      }
+    ]
+  },
+  "backend": "twin",
+  "nav_mode": "fused",
+  "wall_s": 182.3,
+  "ticks": 6123,
+  "sim_time_s": 306.1,
+  "score": {
+    "1_gate": {
+      "entered": true,
+      "full_pass": true,
+      "direction_ok": true,
+      "buoy_contacts": [],
+      "passed": true
+    },
+    "2_dodge": {
+      "sides": {
+        "slalom1_red": {
+          "t": 33.2,
+          "correct_side": true
+        },
+        "slalom2_green": {
+          "t": 43.0,
+          "correct_side": true
+        },
+        "slalom3_red": {
+          "t": 52.7,
+          "correct_side": true
+        },
+        "slalom4_green": {
+          "t": 62.3,
+          "correct_side": true
+        }
+      },
+      "all_correct": true,
+      "contacts": [],
+      "time_s": 48.05,
+      "passed": true
+    },
+    "3_evade": {
+      "entered": true,
+      "exited_full": true,
+      "direction_ok": true,
+      "detector_exposure_s": 0.0,
+      "min_detector_distance_m": 6.87,
+      "bank_contacts": [],
+      "time_s": 21.2,
+      "passed": true
+    },
+    "4_identify": {
+      "color": "blue",
+      "contacted": true,
+      "wrong_contacts": [],
+      "passed": true
+    },
+    "5_deploy": {
+      "action": "deploy",
+      "ok": true,
+      "landing": [
+        -8.954485560559826,
+        -7.999065285057653
+      ],
+      "distance_m": 0.5678899363245726,
+      "success": true,
+      "limit_m": 1.8288000000000002,
+      "t": 172.35000000000758,
+      "attempt": 0,
+      "passed": true
+    },
+    "6_launch": {
+      "action": "launch",
+      "ok": true,
+      "landing": [
+        5.549872143416439,
+        -3.908725865669338
+      ],
+      "distance_m": 0.5487590987242947,
+      "success": true,
+      "target_radius_m": 1.524,
+      "boat_to_area_buoy_m": 4.917806466174345,
+      "t": 221.19999999996315,
+      "attempt": 0,
+      "passed": true
+    },
+    "7_recover": {
+      "action": "recover",
+      "ok": true,
+      "success": 1.0,
+      "along_m": 0.012932074465160093,
+      "outward_m": 0.14342190493524526,
+      "hide": "case",
+      "value": 2,
+      "t": 261.89999999992614,
+      "attempt": 0,
+      "passed": true
+    },
+    "9_return": {
+      "contacted": true,
+      "passed": true
+    },
+    "contacts": {
+      "identify_blue": [
+        138.55
+      ],
+      "return_blue": [
+        273.75
+      ]
+    },
+    "shore_contact_samples": 0,
+    "min_clearance_to_non_target_m": 0.252,
+    "elapsed_s": 306.1,
+    "scoring_note": "Simulation judge: geometric approximation of the AIMM-ICC 2025 rules.",
+    "passed_count": 8
+  },
+  "actions": [
+    {
+      "action": "deploy",
+      "ok": true,
+      "landing": [
+        -8.954485560559826,
+        -7.999065285057653
+      ],
+      "distance_m": 0.5678899363245726,
+      "success": true,
+      "limit_m": 1.8288000000000002,
+      "t": 172.35000000000758,
+      "attempt": 0
+    },
+    {
+      "action": "launch",
+      "ok": true,
+      "landing": [
+        5.549872143416439,
+        -3.908725865669338
+      ],
+      "distance_m": 0.5487590987242947,
+      "success": true,
+      "target_radius_m": 1.524,
+      "boat_to_area_buoy_m": 4.917806466174345,
+      "t": 221.19999999996315,
+      "attempt": 0
+    },
+    {
+      "action": "recover",
+      "ok": true,
+      "success": 1.0,
+      "along_m": 0.012932074465160093,
+      "outward_m": 0.14342190493524526,
+      "hide": "case",
+      "value": 2,
+      "t": 261.89999999992614,
+      "attempt": 0
+    }
+  ],
+  "log": "/tmp/claude-0/runs_cam/20260927_152955_twin_aimm_full.jsonl"
+}

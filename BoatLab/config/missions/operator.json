@@ -1,0 +1,6 @@
+{
+  "name": "operator",
+  "description": "Empty mission for manual waypoint clicking on the dashboard. The boat waits at the dock.",
+  "nav_mode": "fused",
+  "tasks": []
+}

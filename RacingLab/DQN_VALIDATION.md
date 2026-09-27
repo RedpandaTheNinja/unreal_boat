@@ -1,0 +1,15 @@
+# DQN validation status
+
+Implementation checks passed: 12 tests covering existing track/settings behavior plus DQN gradient updates, target-network synchronization, checkpoint/replay resume, configuration rejection, reset reply matching and the 74-element sensor observation/no-return masks. PyTorch 2.14.0+cpu and NumPy 2.5.2 are installed in RacingLab/.venv (Python 3.12).
+
+Native build `_tb/011640120` passed Editor, Development and Shipping and is installed: DLL SHA256 `2CB91EAD9A1C1038B7EBE7E310533B1D46C36472048D51FE9B629294AAADE386`. Adds idempotent reset_episode token, episode counters, physical vehicle reset/zero velocities, sensor-history reset, preserved grip, and chunked non-colliding green line upload.
+
+## Live Unreal acceptance
+
+- First exploratory episode terminated off-track, as expected for an initially random policy. Testing exposed a stale brake-reply/reset matching bug; reset now filters replies by its unique token and consumes stop acknowledgements. A Windows sharing lock on live_status.json also interrupted an early run; atomic publication now retries sharing locks and optional status updates cannot abort training. Aborted evidence remains in dqn_runs.
+- After fixes, six consecutive 8-second training episodes (episodes 3–8) completed without infrastructure errors. Progress per episode ranged 8.36–11.62 m. Total saved learner state: **613 decisions, 486 gradient updates, 8 completed training episodes**, including earlier validation episodes and transitions retained from the interrupted episode. Replay and counters resumed correctly across process launches.
+- Frozen evaluations after episode 5 and episode 8 completed their 8-second horizon without a terminal failure. Progress was **10.49 m** and **12.38 m**, respectively. A separate process loaded the saved checkpoint and evaluated again: **12.14 m**, with unchanged counters (613 decisions/486 updates) and epsilon zero. These are short straight-section integration checks; they do not establish full-course improvement, a completed lap, or superiority over baseline.
+- `validate_dqn_reset.py` passed three consecutive resets, all upright with four contacts and 74 observations. Settled positions matched within 0.02 m (observed variation much smaller). Repeating a reset token did not increment episode_id. Evidence: dqn_runs/reset_acceptance.json.
+- The best partial evaluation was uploaded to Unreal. After resetting to the start, CaptureEditorImage visually confirmed the **green line ahead of the car on the track**. It is a roughly 12.38 m partial trajectory, not a complete optimized racing line. The car was left stopped at the start in Play so the overlay remains visible.
+
+Raw training/evaluation data, settings, rewards, actions, sensors, termination reasons and signatures are in dqn_runs/*.json. Models: dqn_models/latest.pt, best.pt, episode_00005.pt. Training used the user's unchanged speed_mps=3.0, speed ceiling138.5824, grip1.0; DQN selects .25/.5/1 speed fractions. No high-speed capability is implied.

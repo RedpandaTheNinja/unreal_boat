@@ -1,0 +1,11 @@
+{
+  "name": "standoff_tests",
+  "description": "Only the payload tasks (deploy, launch, recover) from the dock - quick iteration on approach and hold tuning.",
+  "nav_mode": "fused",
+  "tasks": [
+    {"type": "deploy", "label": "C5 Deploy"},
+    {"type": "launch", "label": "C6 Launch"},
+    {"type": "recover", "label": "C7 Recover"},
+    {"type": "dock", "label": "Dock"}
+  ]
+}

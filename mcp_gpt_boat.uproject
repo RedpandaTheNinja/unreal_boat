@@ -1,0 +1,43 @@
+﻿{
+    "FileVersion":  3,
+    "EngineAssociation":  "5.8",
+    "Category":  "",
+    "Description":  "",
+    "Plugins":  [
+                    {
+                        "Name":  "ModelingToolsEditorMode",
+                        "Enabled":  true,
+                        "TargetAllowList":  [
+                                                "Editor"
+                                            ]
+                    },
+                    {
+                        "Name":  "GameplayStateTree",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "ModelContextProtocol",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "Terminal",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "EditorToolset",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "MCPClientToolset",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "RapyutaSimulationPlugins",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "BoatPhysics",
+                        "Enabled":  true
+                    }
+                ]
+}

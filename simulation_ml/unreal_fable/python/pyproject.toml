@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fable-devkit"
+version = "0.2.0"
+description = "Python dev kit for testing autonomy algorithms against Unreal Engine car-track and boat worlds"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "scipy>=1.10"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "jsonschema>=4"]
+mcp = ["mcp>=1.20,<2", "httpx>=0.27,<1", "pillow>=10", "jsonschema>=4,<5"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["fable*"]

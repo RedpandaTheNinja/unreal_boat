@@ -1,0 +1,303 @@
+{
+  "mission": {
+    "name": "aimm_full",
+    "index": 8,
+    "paused": false,
+    "aborted": false,
+    "finished": true,
+    "tasks": [
+      {
+        "index": 0,
+        "type": "gate",
+        "challenge": 1,
+        "status": "done",
+        "label": "C1 Gate navigation",
+        "result": {
+          "status": "done"
+        },
+        "duration_s": 26.6
+      },
+      {
+        "index": 1,
+        "type": "slalom",
+        "challenge": 2,
+        "status": "done",
+        "label": "C2 Dodge (slalom)",
+        "result": {
+          "status": "done"
+        },
+        "duration_s": 49.6
+      },
+      {
+        "index": 2,
+        "type": "channel",
+        "challenge": 3,
+        "status": "done",
+        "label": "C3 Evade (channel)",
+        "result": {
+          "status": "done",
+          "planned_min_detector_m": 6.88
+        },
+        "duration_s": 42.7
+      },
+      {
+        "index": 3,
+        "type": "identify",
+        "challenge": 4,
+        "status": "done",
+        "label": "C4 Identify (contact colour)",
+        "result": {
+          "status": "done",
+          "color": "blue",
+          "target": "identify_blue"
+        },
+        "duration_s": 33.6
+      },
+      {
+        "index": 4,
+        "type": "deploy",
+        "challenge": 5,
+        "status": "done",
+        "label": "C5 Deploy sensor at zebra buoy",
+        "result": {
+          "status": "done",
+          "result": {
+            "action": "deploy",
+            "ok": true,
+            "landing": [
+              -9.492522998655376,
+              -7.459613430925192
+            ],
+            "distance_m": 1.129882493737881,
+            "success": true,
+            "limit_m": 1.8288000000000002,
+            "t": 191.07499999999055,
+            "note": "outcome simulated in Python from Unreal truth pose",
+            "attempt": 0
+          }
+        },
+        "duration_s": 41.4
+      },
+      {
+        "index": 5,
+        "type": "launch",
+        "challenge": 6,
+        "status": "done",
+        "label": "C6 Launch at target",
+        "result": {
+          "status": "done",
+          "result": {
+            "action": "launch",
+            "ok": true,
+            "landing": [
+              5.23956390256514,
+              -4.1072635831225695
+            ],
+            "distance_m": 0.8686013163152368,
+            "success": true,
+            "target_radius_m": 1.524,
+            "boat_to_area_buoy_m": 6.075687815651096,
+            "t": 247.7833333332723,
+            "note": "outcome simulated in Python from Unreal truth pose",
+            "attempt": 0
+          }
+        },
+        "duration_s": 56.4
+      },
+      {
+        "index": 6,
+        "type": "recover",
+        "challenge": 7,
+        "status": "done",
+        "label": "C7 Recover floating case",
+        "result": {
+          "status": "done",
+          "result": {
+            "action": "recover",
+            "ok": true,
+            "success": true,
+            "along_m": 0.019779630265866488,
+            "outward_m": 0.3876380611180155,
+            "hide": "case",
+            "value": 2,
+            "t": 292.5249999998983,
+            "note": "outcome simulated in Python from Unreal truth pose",
+            "attempt": 0
+          }
+        },
+        "duration_s": 44.8
+      },
+      {
+        "index": 7,
+        "type": "return",
+        "challenge": 9,
+        "status": "done",
+        "label": "C9 Return + dock",
+        "result": {
+          "status": "done",
+          "dock": "done"
+        },
+        "duration_s": 41.7
+      }
+    ]
+  },
+  "backend": "unreal",
+  "nav_mode": "fused",
+  "wall_s": 344.2,
+  "ticks": 3259,
+  "sim_time_s": 338.9,
+  "score": {
+    "1_gate": {
+      "entered": true,
+      "full_pass": true,
+      "direction_ok": true,
+      "buoy_contacts": [],
+      "passed": true
+    },
+    "2_dodge": {
+      "sides": {
+        "slalom1_red": {
+          "t": 34.88,
+          "correct_side": true
+        },
+        "slalom2_green": {
+          "t": 44.67,
+          "correct_side": true
+        },
+        "slalom3_red": {
+          "t": 54.34,
+          "correct_side": true
+        },
+        "slalom4_green": {
+          "t": 64.14,
+          "correct_side": true
+        }
+      },
+      "all_correct": true,
+      "contacts": [],
+      "time_s": 48.3,
+      "passed": true
+    },
+    "3_evade": {
+      "entered": true,
+      "exited_full": true,
+      "direction_ok": true,
+      "detector_exposure_s": 0.0,
+      "min_detector_distance_m": 6.9,
+      "bank_contacts": [],
+      "time_s": 21.42,
+      "passed": true
+    },
+    "4_identify": {
+      "color": "blue",
+      "contacted": true,
+      "wrong_contacts": [],
+      "passed": true
+    },
+    "5_deploy": {
+      "action": "deploy",
+      "ok": true,
+      "landing": [
+        -9.492522998655376,
+        -7.459613430925192
+      ],
+      "distance_m": 1.129882493737881,
+      "success": true,
+      "limit_m": 1.8288000000000002,
+      "t": 191.07499999999055,
+      "note": "outcome simulated in Python from Unreal truth pose",
+      "attempt": 0,
+      "passed": true
+    },
+    "6_launch": {
+      "action": "launch",
+      "ok": true,
+      "landing": [
+        5.23956390256514,
+        -4.1072635831225695
+      ],
+      "distance_m": 0.8686013163152368,
+      "success": true,
+      "target_radius_m": 1.524,
+      "boat_to_area_buoy_m": 6.075687815651096,
+      "t": 247.7833333332723,
+      "note": "outcome simulated in Python from Unreal truth pose",
+      "attempt": 0,
+      "passed": true
+    },
+    "7_recover": {
+      "action": "recover",
+      "ok": true,
+      "success": true,
+      "along_m": 0.019779630265866488,
+      "outward_m": 0.3876380611180155,
+      "hide": "case",
+      "value": 2,
+      "t": 292.5249999998983,
+      "note": "outcome simulated in Python from Unreal truth pose",
+      "attempt": 0,
+      "passed": true
+    },
+    "9_return": {
+      "contacted": true,
+      "passed": true
+    },
+    "contacts": {
+      "identify_blue": [
+        143.87
+      ],
+      "return_blue": [
+        302.88
+      ]
+    },
+    "shore_contact_samples": 0,
+    "min_clearance_to_non_target_m": 0.269,
+    "elapsed_s": 336.8,
+    "scoring_note": "Simulation judge: geometric approximation of the AIMM-ICC 2025 rules.",
+    "passed_count": 8
+  },
+  "actions": [
+    {
+      "action": "deploy",
+      "ok": true,
+      "landing": [
+        -9.492522998655376,
+        -7.459613430925192
+      ],
+      "distance_m": 1.129882493737881,
+      "success": true,
+      "limit_m": 1.8288000000000002,
+      "t": 191.07499999999055,
+      "note": "outcome simulated in Python from Unreal truth pose",
+      "attempt": 0
+    },
+    {
+      "action": "launch",
+      "ok": true,
+      "landing": [
+        5.23956390256514,
+        -4.1072635831225695
+      ],
+      "distance_m": 0.8686013163152368,
+      "success": true,
+      "target_radius_m": 1.524,
+      "boat_to_area_buoy_m": 6.075687815651096,
+      "t": 247.7833333332723,
+      "note": "outcome simulated in Python from Unreal truth pose",
+      "attempt": 0
+    },
+    {
+      "action": "recover",
+      "ok": true,
+      "success": true,
+      "along_m": 0.019779630265866488,
+      "outward_m": 0.3876380611180155,
+      "hide": "case",
+      "value": 2,
+      "t": 292.5249999998983,
+      "note": "outcome simulated in Python from Unreal truth pose",
+      "attempt": 0
+    }
+  ],
+  "log": "/tmp/claude-0/runs_ue/20260927_152854_unreal_aimm_full.jsonl"
+}

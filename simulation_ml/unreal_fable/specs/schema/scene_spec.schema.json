@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Fable Scene Spec v2",
+  "description": "One test world. Claude writes it from words/sketches; fable_build.py builds it in Unreal; the mock simulator and the task evaluator read the same file. Two scenarios: 'car' (track on terrain) and 'boat' (open water). All distances in METRES, angles in RADIANS, world frame ENU (x east, y north, z up).",
+  "type": "object",
+  "required": ["spec_version", "name", "scenario", "world", "spawn"],
+  "properties": {
+    "spec_version": { "const": "2.0" },
+    "name": { "type": "string" },
+    "scenario": { "enum": ["car", "boat"] },
+    "seed": { "type": "integer", "default": 0 },
+    "notes": { "type": "string", "description": "The prompt / sketch description this was derived from." },
+    "vehicle_params": { "type": "string", "description": "Path to a vehicle_params json, relative to the specs dir." },
+
+    "world": {
+      "type": "object",
+      "required": ["size_m"],
+      "properties": {
+        "size_m": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 },
+        "geo_origin": {
+          "type": "object",
+          "description": "Maps world (0,0) to a lat/lon so the GPS sensor is meaningful.",
+          "properties": { "lat": { "type": "number" }, "lon": { "type": "number" }, "alt": { "type": "number" } }
+        },
+        "terrain": {
+          "type": "object",
+          "description": "Car scenario. Ignored for boat except for shoreline islands.",
+          "properties": {
+            "mode": { "enum": ["flat", "heightmap", "procedural"], "default": "flat" },
+            "heightmap_path": { "type": "string" },
+            "terrain_obj_path": { "type": "string" },
+            "z_scale_m": { "type": "number" },
+            "procedural": {
+              "type": "object",
+              "properties": {
+                "roughness_m": { "type": "number", "default": 0.05 },
+                "feature_size_m": { "type": "number", "default": 8 },
+                "slope_max_deg": { "type": "number", "default": 8 },
+                "octaves": { "type": "integer", "default": 4 }
+              }
+            },
+            "surface": {
+              "type": "object",
+              "properties": {
+                "material_preset": { "enum": ["asphalt", "concrete", "gravel", "grass", "sand", "wet", "ice", "custom"], "default": "asphalt" },
+                "friction": { "type": "number", "default": 0.9 },
+                "restitution": { "type": "number", "default": 0.1 }
+              }
+            }
+          }
+        },
+        "water": {
+          "type": "object",
+          "description": "Boat scenario.",
+          "properties": {
+            "level_m": { "type": "number", "default": 0.0 },
+            "density_kgm3": { "type": "number", "default": 1000 },
+            "waves": {
+              "type": "object",
+              "properties": {
+                "amp_m": { "type": "number", "default": 0.0 },
+                "period_s": { "type": "number", "default": 3.0 },
+                "dir_rad": { "type": "number", "default": 0.0 }
+              }
+            },
+            "shore": {
+              "type": "array",
+              "description": "Islands / shoreline as closed polygons the boat collides with.",
+              "items": {
+                "type": "object",
+                "required": ["polygon_m"],
+                "properties": {
+                  "label": { "type": "string" },
+                  "polygon_m": { "type": "array", "items": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 }, "minItems": 3 },
+                  "height_m": { "type": "number", "default": 1.5 }
+                }
+              }
+            }
+          }
+        },
+        "disturbance": {
+          "type": "object",
+          "description": "Environmental forces. Boat uses all; car uses wind only (and mostly ignores it).",
+          "properties": {
+            "wind":    { "type": "object", "properties": { "speed_mps": { "type": "number", "default": 0 }, "dir_rad": { "type": "number", "default": 0 }, "gust_std_mps": { "type": "number", "default": 0 }, "gust_period_s": { "type": "number", "default": 8 } } },
+            "current": { "type": "object", "properties": { "speed_mps": { "type": "number", "default": 0 }, "dir_rad": { "type": "number", "default": 0 } } }
+          }
+        },
+        "lighting": {
+          "type": "object",
+          "properties": {
+            "preset": { "enum": ["noon", "overcast", "dusk", "night", "indoor"], "default": "noon" },
+            "sun_yaw_rad": { "type": "number", "default": -0.8 },
+            "sun_pitch_rad": { "type": "number", "default": -0.9 },
+            "fog_density": { "type": "number", "default": 0.02 }
+          }
+        }
+      }
+    },
+
+    "spawn": {
+      "type": "object",
+      "required": ["xy_m"],
+      "properties": {
+        "xy_m": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 },
+        "yaw_rad": { "type": "number", "default": 0 },
+        "jitter_m": { "type": "number", "default": 0.3 },
+        "jitter_yaw_rad": { "type": "number", "default": 0.1 }
+      }
+    },
+
+    "track": {
+      "type": "object",
+      "description": "Car: drivable path. Boat: intended route (for scoring only, water is open).",
+      "properties": {
+        "centerline_m": { "type": "array", "items": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 } },
+        "closed": { "type": "boolean", "default": true },
+        "width_m": { "type": "number", "default": 2.0 },
+        "border": { "enum": ["none", "cones", "walls", "curbs", "paint"], "default": "cones" },
+        "border_spacing_m": { "type": "number", "default": 1.5 }
+      }
+    },
+
+    "gates": {
+      "type": "array",
+      "description": "Boat buoy gates, passed in order. Left buoy is red, right is green when heading through.",
+      "items": {
+        "type": "object",
+        "required": ["left_m", "right_m"],
+        "properties": {
+          "label": { "type": "string" },
+          "left_m": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 },
+          "right_m": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 }
+        }
+      }
+    },
+
+    "dock": {
+      "type": "object",
+      "description": "Boat docking target: a pier with a slip.",
+      "properties": {
+        "xy_m": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 },
+        "yaw_rad": { "type": "number", "default": 0 },
+        "slip_width_m": { "type": "number", "default": 1.6 },
+        "slip_length_m": { "type": "number", "default": 3.0 },
+        "pier_length_m": { "type": "number", "default": 8.0 }
+      }
+    },
+
+    "objects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "xy_m"],
+        "properties": {
+          "label": { "type": "string" },
+          "kind": { "enum": ["cone", "barrel", "wall", "box", "ramp", "pole", "rock", "pedestrian_static", "buoy_red", "buoy_green", "buoy_yellow", "moored_boat", "dock_piece", "custom_mesh"] },
+          "asset_path": { "type": "string" },
+          "xy_m": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 },
+          "z_m": { "type": "number", "description": "Omit to sit on ground / float at water level." },
+          "yaw_rad": { "type": "number", "default": 0 },
+          "scale": { "type": "array", "items": { "type": "number" }, "minItems": 3, "maxItems": 3 },
+          "tag": { "type": "string", "default": "obstacle" },
+          "movable": { "type": "boolean", "default": false }
+        }
+      }
+    },
+
+    "obstacle_fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "count", "area_m"],
+        "properties": {
+          "kind": { "enum": ["cone", "barrel", "box", "pole", "rock", "buoy_yellow", "moored_boat"] },
+          "count": { "type": "integer" },
+          "area_m": { "type": "array", "items": { "type": "number" }, "minItems": 4, "maxItems": 4 },
+          "min_separation_m": { "type": "number", "default": 1.5 },
+          "avoid_track_m": { "type": "number", "default": 1.0, "description": "Keep-out distance from track centerline / gate line. 0 disables." },
+          "scale_jitter": { "type": "number", "default": 0.15 }
+        }
+      }
+    },
+
+    "task": {
+      "type": "object",
+      "properties": {
+        "type": { "enum": ["lap", "waypoints", "gates", "goal", "dock", "station_keep"], "default": "waypoints" },
+        "waypoints_m": { "type": "array", "items": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 } },
+        "goal_m": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 },
+        "tolerance_m": { "type": "number", "default": 0.6 },
+        "laps": { "type": "integer", "default": 1 },
+        "max_time_s": { "type": "number", "default": 120 },
+        "fail_on": { "type": "array", "items": { "enum": ["collision", "off_track", "out_of_bounds", "capsize", "timeout"] } },
+        "metrics": {
+          "type": "array",
+          "description": "What the evaluator reports. cross_track_rms, time, collisions, gates_passed, dock_error_m, heading_error_rms, control_effort, min_clearance_m",
+          "items": { "type": "string" }
+        }
+      }
+    },
+
+    "randomization": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean", "default": false },
+        "vary": { "type": "array", "items": { "enum": ["obstacle_layout", "friction", "wind", "current", "waves", "spawn_pose", "sensor_noise", "actuator_delay", "mass"] } },
+        "ranges": { "type": "object", "additionalProperties": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 } }
+      }
+    }
+  }
+}

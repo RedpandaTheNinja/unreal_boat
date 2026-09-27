@@ -1,0 +1,20 @@
+{
+  "episodes": 20,
+  "max_episode_seconds": 120,
+  "max_episode_steps": 1200,
+  "decision_seconds": 0.1,
+  "hidden_units": 128,
+  "learning_rate": 0.0003,
+  "batch_size": 64,
+  "replay_capacity": 30000,
+  "learning_starts": 128,
+  "gamma": 0.99,
+  "target_update_steps": 250,
+  "epsilon_start": 1.0,
+  "epsilon_end": 0.05,
+  "epsilon_decay_steps": 20000,
+  "steering_actions_rad": [-0.46, -0.30, -0.15, 0.0, 0.15, 0.30, 0.46],
+  "speed_fractions": [0.25, 0.5, 1.0],
+  "evaluation_every_episodes": 5,
+  "seed": 7
+}

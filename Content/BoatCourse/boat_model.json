@@ -1,0 +1,21 @@
+{
+  "hull_length_ft": 13,
+  "hull_beam_ft": 3,
+  "hull_length_m": 3.9624,
+  "hull_beam_m": 0.9144,
+  "supersedes_previous_length_ft": 16,
+  "motor_count": 2,
+  "motor_location": "stern",
+  "motor_steering": "fixed_differential_thrust",
+  "reverse_capable": true,
+  "level": "/Game/BoatCourse/Lake_300x80ft",
+  "actor_label": "Boat_13ft_x_3ft_TwinMotors",
+  "outliner_folder": "BoatCourse/Boat",
+  "status": "dynamic_physics_uncalibrated",
+  "notes": "Geometric buoyancy, independent reversible thrust, drag, added mass, wind/current/waves and 120 Hz physics implemented. Hull shape, inertia and hydrodynamic coefficients remain estimates; measured real-boat validation pending.",
+  "base_mass_kg": 58.9670081,
+  "payload_mass_kg": 113.3980925,
+  "loaded_mass_kg": 172.3651006,
+  "motor_spacing_m": 0.6096,
+  "physics_component": "BoatDynamics"
+}

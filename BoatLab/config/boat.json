@@ -1,0 +1,168 @@
+{
+  "schema": "boatlab_boat_v1",
+  "frames": "Body FLU: x forward, y left (port), z up. World: local ENU x east, y north. Heading CCW from east.",
+  "hull": {
+    "length_m": 3.9624,
+    "beam_m": 0.9144,
+    "real_boat_length_m": 3.66,
+    "note": "Unreal hull is 13 ft x 3 ft (kept by choice); your real boat is about 12 ft. The planner uses length_m for clearance, so 13 ft is slightly conservative for the real boat."
+  },
+  "dynamics": {
+    "note": "Copied from Plugins/BoatPhysics UBoatDynamicsComponent defaults so the Python twin matches Unreal. Uncalibrated estimates until real-water logs exist.",
+    "mass_kg": 172.3651006,
+    "com_x_m": -0.0513,
+    "inertia_z_kgm2": 99.18,
+    "added_mass_x_kg": 12.0,
+    "added_mass_y_kg": 90.0,
+    "added_inertia_z_kgm2": 60.0,
+    "linear_drag": [
+      25.0,
+      100.0
+    ],
+    "quadratic_drag": [
+      45.0,
+      220.0
+    ],
+    "yaw_linear_drag": 55.0,
+    "yaw_quadratic_drag": 100.0,
+    "wind_area_m2": [
+      0.3,
+      1.2
+    ],
+    "wind_center_x_m": 0.0
+  },
+  "motors": {
+    "count": 2,
+    "spacing_m": 0.6096,
+    "x_m": -2.14,
+    "max_forward_n": 133.44664846,
+    "max_reverse_n": 80.06798908,
+    "deadband": 0.06,
+    "time_constant_s": 0.35,
+    "command_delay_s": 0.08,
+    "command_timeout_s": 0.5,
+    "unload_per_mps": 0.12,
+    "note": "Commands are continuous in [-1, 1] per motor, left = port, right = starboard. Positive = forward thrust."
+  },
+  "camera": {
+    "width": 640,
+    "height": 480,
+    "hfov_deg": 90.0,
+    "mount_flu_m": [
+      1.5,
+      0.0,
+      0.8
+    ],
+    "pitch_down_deg": 8.0,
+    "max_range_m": 40.0,
+    "depth": true,
+    "note": "Matches the BoatCameraSensor defaults added to the Unreal plugin. Real boat: ZED2i (depth) + webcam.",
+    "height_above_water_m": 0.925
+  },
+  "gps": {
+    "sim_noise_m": 0.02,
+    "sim_heading_noise_deg": 0.5,
+    "note": "0.02 m approximates RTK fix. Set 1.5 for plain GPS tests."
+  },
+  "mechanisms": {
+    "note": "Side-mounted on starboard (user choice). All offsets are body FLU metres; starboard is negative y. heading_tol_deg (optional) tightens the hold before firing. Edit to match your hardware.",
+    "deploy": {
+      "mount_flu_m": [
+        0.0,
+        -0.46
+      ],
+      "release_gap_m": 0.9,
+      "success_radius_m": 1.8288,
+      "sim_drift_sigma_m": 0.15
+    },
+    "launch": {
+      "mount_flu_m": [
+        -0.3,
+        -0.3
+      ],
+      "azimuth_deg": -90.0,
+      "range_m": 4.2,
+      "range_tolerance_m": 0.6,
+      "sim_dispersion_m": 0.35,
+      "max_distance_from_area_buoy_m": 5.0,
+      "heading_tol_deg": 5.0
+    },
+    "recover": {
+      "mount_flu_m": [
+        0.6,
+        -0.46
+      ],
+      "reach_m": 0.55,
+      "capture_halflength_m": 0.45,
+      "release_gap_m": 0.35
+    }
+  },
+  "control": {
+    "rate_hz": 20,
+    "lookahead_min_m": 3.5,
+    "lookahead_max_m": 7.0,
+    "lookahead_time_s": 1.5,
+    "speed": {
+      "transit": 1.25,
+      "gate": 1.0,
+      "slalom": 1.0,
+      "channel": 0.9,
+      "approach": 0.7,
+      "final": 0.3,
+      "contact": 0.35,
+      "reverse": 0.4
+    },
+    "decel_mps2": 0.2,
+    "pivot_enter_deg": 70.0,
+    "pivot_exit_deg": 25.0,
+    "pivot_max_cmd": 0.55,
+    "kp_speed": 1.0,
+    "ki_speed": 0.2,
+    "kp_heading_pivot": 1.0,
+    "kd_heading_pivot": 2.2,
+    "hold": {
+      "kp_surge": 0.8,
+      "kd_surge": 1.2,
+      "kp_heading": 1.2,
+      "kd_heading": 1.5,
+      "pos_tol_m": 0.35,
+      "heading_tol_deg": 12.0,
+      "speed_tol_mps": 0.12,
+      "settle_s": 1.5,
+      "lateral_abort_m": 0.9,
+      "max_cmd": 0.35
+    },
+    "arrive_radius_m": 1.5,
+    "kp_heading": 2.5,
+    "kd_heading": 2.0,
+    "turn_max_cmd": 0.9
+  },
+  "planning": {
+    "grid_res_m": 0.25,
+    "hull_clearance_m": 0.6,
+    "shore_margin_m": 0.8,
+    "gate_lead_m": 5.0,
+    "gate_follow_m": 3.0,
+    "slalom_offset_m": 1.6,
+    "detector_cost_weight": 25.0,
+    "approach_lead_m": 7.0,
+    "heading_candidates": 24
+  },
+  "real": {
+    "note": "Real-boat backend (boatnav/hal/real.py). Untested on hardware: bench test with props out of the water first.",
+    "motor_serial": "/dev/ttyUSB0",
+    "motor_baud": 115200,
+    "motor_scale": 1000,
+    "invert": [
+      false,
+      false
+    ],
+    "nav_source": "mavlink",
+    "mavlink_url": "/dev/ttyACM0",
+    "mavlink_baud": 115200,
+    "nmea_serial": "/dev/ttyUSB1",
+    "nmea_baud": 9600,
+    "camera_index": 0,
+    "use_zed": false
+  }
+}

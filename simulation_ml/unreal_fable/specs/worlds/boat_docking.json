@@ -1,0 +1,115 @@
+{
+  "spec_version": "2.0",
+  "name": "boat_docking",
+  "scenario": "boat",
+  "seed": 9,
+  "notes": "Approach from 30 m out and stop inside a 1.6 m wide slip on an 8 m pier in a 1.5 m/s cross-wind. Scores final position/heading error and counts fender contacts (a touch is a contact, not a failure). Two moored boats crowd the approach.",
+  "vehicle_params": "vehicles/boat_twin_thruster_default.json",
+  "world": {
+    "size_m": [
+      80,
+      60
+    ],
+    "water": {
+      "level_m": 0.0,
+      "waves": {
+        "amp_m": 0.03,
+        "period_s": 2.0,
+        "dir_rad": 1.57
+      }
+    },
+    "disturbance": {
+      "wind": {
+        "speed_mps": 1.5,
+        "dir_rad": 1.571,
+        "gust_std_mps": 0.5,
+        "gust_period_s": 6
+      },
+      "current": {
+        "speed_mps": 0.05,
+        "dir_rad": 1.571
+      }
+    },
+    "lighting": {
+      "preset": "dusk"
+    }
+  },
+  "spawn": {
+    "xy_m": [
+      -30.0,
+      -4.0
+    ],
+    "yaw_rad": 0.1,
+    "jitter_m": 1.0,
+    "jitter_yaw_rad": 0.3
+  },
+  "dock": {
+    "xy_m": [
+      0.0,
+      0.0
+    ],
+    "yaw_rad": 0.0,
+    "slip_width_m": 1.6,
+    "slip_length_m": 3.0,
+    "pier_length_m": 8.0
+  },
+  "objects": [
+    {
+      "label": "moored_A",
+      "kind": "moored_boat",
+      "xy_m": [
+        -6.0,
+        4.5
+      ],
+      "yaw_rad": 0.0,
+      "tag": "obstacle"
+    },
+    {
+      "label": "moored_B",
+      "kind": "moored_boat",
+      "xy_m": [
+        -12.0,
+        -6.0
+      ],
+      "yaw_rad": 0.3,
+      "tag": "obstacle"
+    }
+  ],
+  "obstacle_fields": [],
+  "task": {
+    "type": "dock",
+    "goal_m": [
+      0.0,
+      0.0
+    ],
+    "tolerance_m": 0.35,
+    "max_time_s": 180,
+    "fail_on": [
+      "timeout"
+    ],
+    "metrics": [
+      "dock_error_m",
+      "heading_error_rms",
+      "time",
+      "collisions",
+      "control_effort"
+    ]
+  },
+  "randomization": {
+    "enabled": true,
+    "vary": [
+      "wind",
+      "spawn_pose"
+    ],
+    "ranges": {
+      "wind_speed_mps": [
+        0,
+        2.5
+      ],
+      "wind_dir_rad": [
+        0.8,
+        2.3
+      ]
+    }
+  }
+}

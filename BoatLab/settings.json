@@ -1,0 +1,10 @@
+{
+  "engine_root": "C:/Program Files/Epic Games/UE_5.8",
+  "project_file": "mcp_gpt_boat.uproject",
+  "python": "C:/Users/kevin/AppData/Local/BoatLab/venv/Scripts/python.exe",
+  "dashboard_port": 8770,
+  "runner_api_port": 8772,
+  "ue_udp_port": 7450,
+  "default_mission": "aimm_full",
+  "note": "python: leave empty to use BoatLab/.venv (created by 01_Setup.cmd); a missing path also falls back to .venv. Set to a venv on a local disk to keep it off Google Drive. engine_root: your UE 5.8 install."
+}
