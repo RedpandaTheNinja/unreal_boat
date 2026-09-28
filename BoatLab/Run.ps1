@@ -35,6 +35,14 @@ function Get-Python {
     throw 'BoatLab Python environment missing. Run 01_Setup.cmd first (or set "python" in BoatLab/settings.json).'
 }
 
+function Find-Python([string]$exe, [string[]]$opts = @()) {
+    # Full path of a working Python 3.11/3.12 behind $exe (e.g. py -3.12), or $null. It actually runs the
+    # interpreter, so the Microsoft Store "python" alias on a PC without Python (prints a hint, exits 9009) is rejected.
+    try { $out = & $exe @opts -c 'import sys; print(sys.executable); sys.exit(sys.version_info[:2] not in ((3, 11), (3, 12)))' 2>$null } catch { return $null }
+    if ($LASTEXITCODE -eq 0 -and $out) { return "$out".Trim() }
+    return $null
+}
+
 function Start-Dashboard {
     $py = Get-Python
     $url = "http://127.0.0.1:$($cfg.dashboard_port)"
@@ -83,17 +91,25 @@ Push-Location $lab
 try {
     switch ($Action) {
         'setup' {
-            $base = $null
-            if (Get-Command py -ErrorAction SilentlyContinue) {
-                foreach ($v in @('-3.12', '-3.11')) { try { $base = & py $v -c 'import sys; print(sys.executable)' 2>$null; if ($base) { break } } catch {} }
+            $base = Find-Python py @('-3.12')
+            if (-not $base) { $base = Find-Python py @('-3.11') }
+            if (-not $base) { $base = Find-Python python }
+            if (-not $base) {
+                # No Python installed: fall back to the Python 3.11 that ships with Unreal Engine.
+                $base = Find-Python (Join-Path $engine 'Engine/Binaries/ThirdParty/Python3/Win64/python.exe')
+                if ($base) { Write-Host 'No Python 3.11/3.12 installed; using the Python bundled with Unreal Engine.' }
             }
-            if (-not $base) { $base = (Get-Command python -ErrorAction SilentlyContinue).Source }
-            if (-not $base) { throw 'Install Python 3.12 (python.org, tick "py launcher"), then run setup again.' }
+            if (-not $base) {
+                throw ('No Python 3.11/3.12 found, and no Unreal Python under engine_root "' + $engine + '". Install Python 3.12 ' +
+                    '(python.org, tick "py launcher", or run: winget install -e --id Python.Python.3.12), or fix engine_root in settings.json, then run setup again.')
+            }
             Write-Host "Creating BoatLab/.venv from $base"
             & $base -m venv (Join-Path $lab '.venv')
             $py = Join-Path $lab '.venv/Scripts/python.exe'
+            if ($LASTEXITCODE -or -not (Test-Path -LiteralPath $py)) { throw "Could not create BoatLab/.venv with $base" }
             & $py -m pip install --upgrade pip
             & $py -m pip install -r (Join-Path $lab 'requirements.txt')
+            if ($LASTEXITCODE) { throw 'Installing the Python packages failed (see above). Check the internet connection and run setup again.' }
             & $py tools/check_install.py
         }
         'check' { & (Get-Python) tools/check_install.py }
